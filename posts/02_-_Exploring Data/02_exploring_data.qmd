@@ -50,19 +50,23 @@ Now let us practice computing means and medians of some of the numerical data.
 ```{r}
 mean(df$HR)
 ```
+
 During the 2021 season, MLB teams hit about 378 home runs on average.
 
 ```{r}
 median(df$HR)
 ```
+
 During the 2021 season, the median number of home runs per team was 198.
 
 ```{r}
 mean(df$SB)
 ```
+
 During the 2021 season, MLB teams stole about 141 bases on average.
 
 ```{r}
 median(df$SB)
 ```
+
 During the 2021 season, the median number of stolen bases per team was 75.

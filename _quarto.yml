@@ -1,0 +1,17 @@
+project:
+  type: website
+
+website:
+  title: "Slides for Sports Analytics"
+  description: "Spark 01-44 at UC Merced, Fall 2022"
+  navbar:
+    right:
+      - slides.qmd
+
+format:
+  html:
+    theme: cerulean
+    css: styles.css
+
+
+

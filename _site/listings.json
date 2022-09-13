@@ -2,7 +2,8 @@
   {
     "listing": "/slides.html",
     "items": [
-      "/posts/02_-_Exploring Data/02_exploring_data.html"
+      "/posts/02_-_Exploring Data/02_exploring_data.html",
+      "/posts/03_Boxplots/03_boxplots.html"
     ]
   }
 ]

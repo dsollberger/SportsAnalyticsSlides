@@ -8,7 +8,7 @@ format:
 
 # The Story of Glenn Burke
 
-Glenn Burke was an outfielder with the 1977 World Series champion Dodgers.  He was born in Oakland in 1952.
+Glenn Burke was an outfielder with the 1977 National-League champion Dodgers.  He was born in Oakland in 1952.
 
 ![Image credit: Washington Post](GlennBurkeBatting.png)
 

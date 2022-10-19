@@ -1,0 +1,142 @@
+---
+title: "6: Linear Regression"
+author: "Derek Sollberger"
+format: 
+  html:
+    toc: true
+---
+
+## Load the Tidyverse
+
+The `tidyverse` suite of packages are streamlined to make data science processes easier.  We can load the packages with the `library()` command.
+
+```{r}
+
+library("Lahman")
+library("tidyverse")
+```
+
+```{r}
+correlatedValues = function(x, r = 0.9){
+  r2 = r**2
+  ve = 1-r2
+  SD = sqrt(ve)
+  e  = rnorm(length(x), mean=0, sd=SD)
+  y  = r*x + e
+  return(y)
+}
+```
+
+
+# Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.
+
+```{r}
+
+# df <- Teams |>
+#   filter(yearID >= 1990) |>
+#   filter(yearID < 2000)
+# 
+# readr::write_csv(df, "baseball_data_90s.csv")
+
+df <- readr::read_csv("baseball_data_90s.csv")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+
+colnames(df)
+```
+
+
+# Linear Regression
+
+A *scatterplot* plots points on a graph where both the horizontal and vertical axes are numerical variables.
+
+```{r}
+df |>
+  ggplot(aes(x = R, y = W)) +
+  geom_point() + 
+  geom_smooth(method = "lm", color = "blue") + #makes the regression line
+  labs(title = "MLB Data",
+       subtitle = "Regression Line",
+       caption = "seasons 1990 to 1999",
+       x = "runs scored",
+       y = "wins")
+```
+
+```{r}
+# linear model (think "y = mx + b")
+lin_fit <- lm(W ~ R, data = df)
+m <- lin_fit$coefficients[2]
+b <- lin_fit$coefficients[1]
+
+df |>
+  ggplot(aes(x = R, y = W)) +
+  geom_point() + 
+  geom_smooth(method = "lm", color = "blue") + #makes the regression line
+  labs(title = "MLB Data",
+       subtitle = paste0("y = ", round(m,4), "x + ", round(b, 4)),
+       caption = "seasons 1990 to 1999",
+       x = "runs scored",
+       y = "wins")
+```
+
+# Making Predictions
+
+Example: How many wins do we expect for a baseball team that scores 800 runs in a season?
+
+```{r}
+lin_fit <- lm(W ~ R, data = df)
+predict(lin_fit, newdata = data.frame(R = 800))
+```
+We predict about 83.48 wins for a baseball team that scores 800 runs in a season.
+
+
+# Another Example
+
+Example: How many wins do we expect for a baseball team whose pitching ERA  (earned run average) is 4.00?
+
+```{r}
+# linear model (think "y = mx + b")
+lin_fit <- lm(W ~ ERA, data = df)
+m <- lin_fit$coefficients[2]
+b <- lin_fit$coefficients[1]
+
+df |>
+  ggplot(aes(x = ERA, y = W)) +
+  geom_point() + 
+  geom_smooth(method = "lm", color = "blue") + #makes the regression line
+  labs(title = "MLB Data",
+       subtitle = paste0("y = ", round(m,4), "x + ", round(b, 4)),
+       caption = "seasons 1990 to 1999",
+       x = "earned run average",
+       y = "wins")
+```
+
+```{r}
+lin_fit <- lm(W ~ ERA, data = df)
+predict(lin_fit, newdata = data.frame(ERA = 4))
+```
+
+We predict about 80.76 wins for a baseball team whose season ERA is 4.00.

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Derek Sollberger">
+<meta name="dcterms.date" content="2022-10-11">
+
+<title>Slides for Sports Analytics - 7: WAR</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Slides for Sports Analytics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html">SportsAnalyticsSlides</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">7: WAR</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Derek Sollberger </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 11, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="sabermetrics" class="level2">
+<h2 class="anchored" data-anchor-id="sabermetrics">Sabermetrics</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>“As originally defined by Bill James in 1980, sabermetrics is ‘the search for objective knowledge about baseball.’ James coined the phrase in part to honor the Society for American Baseball Research.”</p>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Bill_James.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Bill James</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="box-scores" class="level2">
+<h2 class="anchored" data-anchor-id="box-scores">Box Scores</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="box_score.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Box Score in a Newspaper</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="war" class="level2">
+<h2 class="anchored" data-anchor-id="war">WAR</h2>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+WAR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>WAR (wins above replacement) gives an analyst a sense of how much a player contributes to the team versus a replacement-level player.</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Two Types of WAR
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are two main sources that calculate WAR, but with different formulas:</p>
+<ul>
+<li>Baseball Reference</li>
+<li>FanGraphs</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="bwar" class="level2">
+<h2 class="anchored" data-anchor-id="bwar">bWAR</h2>
+<p>The WAR calculation over at Baseball Reference is called bWAR, and the overall scheme is</p>
+<p><span class="math display">\[bWar = (P_{\text{runs}} - A_{\text{runs}}) + (A_{\text{runs}} - R_{\text{runs}})\]</span></p>
+<p>whose terms are computed with factors such as</p>
+<ul>
+<li>batting runs</li>
+<li>baserunning runs</li>
+<li>runs added or lost due to grounding into double plays</li>
+<li>fielding runs</li>
+<li>positional adjustment runs</li>
+</ul>
+<p>These factors are compared to the league average where a value of 0 represents an average player.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+wOBA
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Batting runs depends on weighted runs above average</p>
+<p><span class="math display">\[wRAA = \frac{wOBA - 0.320}{1.25}*(AB + BB + HBP + SF + SH)\]</span></p>
+<p>where</p>
+<p><span class="math display">\[wOBA = \frac{ \alpha_{1}*uBB + \alpha_{2}*HBP + \alpha_{3}*1B + \alpha_{4}*2B + \alpha_{5}*3B + \alpha_{6}*HR + \alpha_{7}*SB - \alpha_{8}*CS }{ AB + BB - IBB + HBP + SF }\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="fwar" class="level2">
+<h2 class="anchored" data-anchor-id="fwar">fWAR</h2>
+<p>The FanGraphs formula for position players involves offense, defense, and baserunning.</p>
+<p><span class="math display">\[fWAR = wRAA + UZR + position + \frac{20}{600}*PA\]</span></p>
+<ul>
+<li>runs above average</li>
+<li>ultimate zone rating</li>
+<li>ultimate base running</li>
+<li>park factors</li>
+</ul>
+</section>
+<section id="comparing-current-players" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-current-players">Comparing Current Players</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Aaron Judge</p>
+<ul>
+<li>bWAR: 10.6</li>
+<li>fWAR: 11.4</li>
+</ul>
+<p><img src="Aaron_Judge.png" class="img-fluid"></p>
+</div><div class="column" style="width:34%;">
+<p>Shohei Ohtani</p>
+<ul>
+<li>bWAR: 9.6</li>
+<li>fWAR: 9.5</li>
+</ul>
+<p><img src="Shohei_Ohtani.png" class="img-fluid"></p>
+</div><div class="column" style="width:33%;">
+<p>Sandy Alcantara</p>
+<ul>
+<li>bWAR: 8.1</li>
+<li>fWAR: 5.7</li>
+</ul>
+<p><img src="Sandy_Alcantara.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="comparing-careers" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-careers">Comparing Careers</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Aaron Judge</p>
+<ul>
+<li>bWAR: 36.9</li>
+<li>fWAR: 36.5</li>
+</ul>
+<p><img src="Aaron_Judge.png" class="img-fluid"></p>
+</div><div class="column" style="width:34%;">
+<p>Shohei Ohtani</p>
+<ul>
+<li>bWAR: 24.7</li>
+<li>fWAR: 13.3</li>
+</ul>
+<p><img src="Shohei_Ohtani.png" class="img-fluid"></p>
+</div><div class="column" style="width:33%;">
+<p>Sandy Alcantara</p>
+<ul>
+<li>bWAR: 16.7</li>
+<li>fWAR: 13.2</li>
+</ul>
+<p><img src="Sandy_Alcantara.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://www.baseball-reference.com/about/war_explained.shtml">https://www.baseball-reference.com/about/war_explained.shtml</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Box_score_(baseball)">https://en.wikipedia.org/wiki/Box_score_(baseball)</a></li>
+<li><a href="https://www.fangraphs.com/leaders/war">https://www.fangraphs.com/leaders/war</a></li>
+<li><a href="https://sabr.org/sabermetrics">https://sabr.org/sabermetrics</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Wins_Above_Replacement">https://en.wikipedia.org/wiki/Wins_Above_Replacement</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

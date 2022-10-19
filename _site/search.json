@@ -39,7 +39,7 @@
     "href": "slides.html",
     "title": "SportsAnalyticsSlides",
     "section": "",
-    "text": "Derek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
+    "text": "Derek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/02_-_Exploring Data/02_exploring_data.html#look-at-the-data",
@@ -285,5 +285,124 @@
     "title": "5: Scatterplots",
     "section": "Adding Correlation to Visualization",
     "text": "Adding Correlation to Visualization\n\ncor_value <- df |>\n  summarize(r = cor(R, W, use = \"pairwise.complete.obs\")) |>\n  unlist()\n\ndf |>\n  ggplot(aes(x = R, y = W)) +\n  geom_point(color = \"blue\") + #makes the scatterplot\n  labs(title = \"MLB Data\",\n       subtitle = paste0(\"r = \", round(cor_value, 4), \n                         \", slightly and positively correlated\"),\n       caption = \"seasons 1990 to 1999\",\n       x = \"runs scored\",\n       y = \"wins\")"
+  },
+  {
+    "objectID": "posts/06_Regression/06_regression.html",
+    "href": "posts/06_Regression/06_regression.html",
+    "title": "6: Linear Regression",
+    "section": "",
+    "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\nlibrary(\"Lahman\")\nlibrary(\"tidyverse\")\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──\n\n\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.8     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.1\n✔ readr   2.1.2     ✔ forcats 0.5.1\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\n\ncorrelatedValues = function(x, r = 0.9){\n  r2 = r**2\n  ve = 1-r2\n  SD = sqrt(ve)\n  e  = rnorm(length(x), mean=0, sd=SD)\n  y  = r*x + e\n  return(y)\n}"
+  },
+  {
+    "objectID": "posts/06_Regression/06_regression.html#look-at-the-data",
+    "href": "posts/06_Regression/06_regression.html#look-at-the-data",
+    "title": "6: Linear Regression",
+    "section": "Look at the Data",
+    "text": "Look at the Data\nOne way to get a quick look at the data set is with the head() command (outputs the first few rows and columns).\n\nhead(df)\n\n# A tibble: 6 × 48\n  yearID lgID  teamID franchID divID  Rank     G Ghome     W     L DivWin WCWin\n   <dbl> <chr> <chr>  <chr>    <chr> <dbl> <dbl> <dbl> <dbl> <dbl> <chr>  <chr>\n1   1990 NL    ATL    ATL      W         6   162    81    65    97 N      <NA> \n2   1990 AL    BAL    BAL      E         5   161    80    76    85 N      <NA> \n3   1990 AL    BOS    BOS      E         1   162    81    88    74 Y      <NA> \n4   1990 AL    CAL    ANA      W         4   162    81    80    82 N      <NA> \n5   1990 AL    CHA    CHW      W         2   162    80    94    68 N      <NA> \n6   1990 NL    CHN    CHC      E         4   162    81    77    85 N      <NA> \n# … with 36 more variables: LgWin <chr>, WSWin <chr>, R <dbl>, AB <dbl>,\n#   H <dbl>, X2B <dbl>, X3B <dbl>, HR <dbl>, BB <dbl>, SO <dbl>, SB <dbl>,\n#   CS <dbl>, HBP <dbl>, SF <dbl>, RA <dbl>, ER <dbl>, ERA <dbl>, CG <dbl>,\n#   SHO <dbl>, SV <dbl>, IPouts <dbl>, HA <dbl>, HRA <dbl>, BBA <dbl>,\n#   SOA <dbl>, E <dbl>, DP <dbl>, FP <dbl>, name <chr>, park <chr>,\n#   attendance <dbl>, BPF <dbl>, PPF <dbl>, teamIDBR <chr>,\n#   teamIDlahman45 <chr>, teamIDretro <chr>\n\n\nWe can also look at the structure of a data frame with the str() command. In particular, this view allows us to quickly see which variables are numerical and which are categorical.\n\nstr(df, give.attr = FALSE)\n\nspec_tbl_df [278 × 48] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ yearID        : num [1:278] 1990 1990 1990 1990 1990 1990 1990 1990 1990 1990 ...\n $ lgID          : chr [1:278] \"NL\" \"AL\" \"AL\" \"AL\" ...\n $ teamID        : chr [1:278] \"ATL\" \"BAL\" \"BOS\" \"CAL\" ...\n $ franchID      : chr [1:278] \"ATL\" \"BAL\" \"BOS\" \"ANA\" ...\n $ divID         : chr [1:278] \"W\" \"E\" \"E\" \"W\" ...\n $ Rank          : num [1:278] 6 5 1 4 2 4 1 4 3 4 ...\n $ G             : num [1:278] 162 161 162 162 162 162 162 162 162 162 ...\n $ Ghome         : num [1:278] 81 80 81 81 80 81 81 81 81 81 ...\n $ W             : num [1:278] 65 76 88 80 94 77 91 77 79 75 ...\n $ L             : num [1:278] 97 85 74 82 68 85 71 85 83 87 ...\n $ DivWin        : chr [1:278] \"N\" \"N\" \"Y\" \"N\" ...\n $ WCWin         : chr [1:278] NA NA NA NA ...\n $ LgWin         : chr [1:278] \"N\" \"N\" \"N\" \"N\" ...\n $ WSWin         : chr [1:278] \"N\" \"N\" \"N\" \"N\" ...\n $ R             : num [1:278] 682 669 699 690 682 690 693 732 750 573 ...\n $ AB            : num [1:278] 5504 5410 5516 5570 5402 ...\n $ H             : num [1:278] 1376 1328 1502 1448 1393 ...\n $ X2B           : num [1:278] 263 234 298 237 251 240 284 266 241 209 ...\n $ X3B           : num [1:278] 26 22 31 27 44 36 40 41 32 32 ...\n $ HR            : num [1:278] 162 132 106 147 106 136 125 110 172 94 ...\n $ BB            : num [1:278] 473 660 598 566 478 406 466 458 634 548 ...\n $ SO            : num [1:278] 1010 962 795 1000 903 869 913 836 952 997 ...\n $ SB            : num [1:278] 92 94 53 69 140 151 166 107 82 179 ...\n $ CS            : num [1:278] 55 52 52 43 90 50 66 52 57 83 ...\n $ HBP           : num [1:278] 27 40 28 28 36 30 42 29 34 28 ...\n $ SF            : num [1:278] 31 41 44 45 47 51 42 61 41 41 ...\n $ RA            : num [1:278] 821 698 664 706 633 774 597 737 754 656 ...\n $ ER            : num [1:278] 727 644 596 613 581 695 549 676 697 581 ...\n $ ERA           : num [1:278] 4.58 4.04 3.72 3.79 3.61 4.34 3.39 4.26 4.39 3.61 ...\n $ CG            : num [1:278] 17 10 15 21 17 13 14 12 15 12 ...\n $ SHO           : num [1:278] 8 5 13 13 10 7 12 10 12 6 ...\n $ SV            : num [1:278] 30 43 44 42 68 42 50 47 45 37 ...\n $ IPouts        : num [1:278] 4289 4306 4326 4362 4348 ...\n $ HA            : num [1:278] 1527 1445 1439 1482 1313 ...\n $ HRA           : num [1:278] 128 161 92 106 106 121 124 163 154 130 ...\n $ BBA           : num [1:278] 579 537 519 544 548 572 543 518 661 496 ...\n $ SOA           : num [1:278] 938 776 997 944 914 ...\n $ E             : num [1:278] 158 93 123 142 124 124 102 117 131 131 ...\n $ DP            : num [1:278] 133 151 154 186 169 136 126 146 178 124 ...\n $ FP            : num [1:278] 0.974 0.985 0.98 0.978 0.98 0.98 0.983 0.981 0.979 0.978 ...\n $ name          : chr [1:278] \"Atlanta Braves\" \"Baltimore Orioles\" \"Boston Red Sox\" \"California Angels\" ...\n $ park          : chr [1:278] \"Atlanta-Fulton County Stadium\" \"Memorial Stadium\" \"Fenway Park II\" \"Anaheim Stadium\" ...\n $ attendance    : num [1:278] 980129 2415189 2528986 2555688 2002357 ...\n $ BPF           : num [1:278] 105 97 105 97 98 108 105 100 101 97 ...\n $ PPF           : num [1:278] 106 98 105 97 98 108 105 100 102 98 ...\n $ teamIDBR      : chr [1:278] \"ATL\" \"BAL\" \"BOS\" \"CAL\" ...\n $ teamIDlahman45: chr [1:278] \"ATL\" \"BAL\" \"BOS\" \"CAL\" ...\n $ teamIDretro   : chr [1:278] \"ATL\" \"BAL\" \"BOS\" \"CAL\" ...\n\n\nAnother convenient tool for our programming purposes is looking at the column names (i.e. variable names that we need to type later)\n\ncolnames(df)\n\n [1] \"yearID\"         \"lgID\"           \"teamID\"         \"franchID\"      \n [5] \"divID\"          \"Rank\"           \"G\"              \"Ghome\"         \n [9] \"W\"              \"L\"              \"DivWin\"         \"WCWin\"         \n[13] \"LgWin\"          \"WSWin\"          \"R\"              \"AB\"            \n[17] \"H\"              \"X2B\"            \"X3B\"            \"HR\"            \n[21] \"BB\"             \"SO\"             \"SB\"             \"CS\"            \n[25] \"HBP\"            \"SF\"             \"RA\"             \"ER\"            \n[29] \"ERA\"            \"CG\"             \"SHO\"            \"SV\"            \n[33] \"IPouts\"         \"HA\"             \"HRA\"            \"BBA\"           \n[37] \"SOA\"            \"E\"              \"DP\"             \"FP\"            \n[41] \"name\"           \"park\"           \"attendance\"     \"BPF\"           \n[45] \"PPF\"            \"teamIDBR\"       \"teamIDlahman45\" \"teamIDretro\""
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html",
+    "href": "posts/07_WAR/07_WAR.html",
+    "title": "7: WAR",
+    "section": "",
+    "text": "“As originally defined by Bill James in 1980, sabermetrics is ‘the search for objective knowledge about baseball.’ James coined the phrase in part to honor the Society for American Baseball Research.”\n\n\n\n\nBill James"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#box-scores",
+    "href": "posts/07_WAR/07_WAR.html#box-scores",
+    "title": "7: WAR",
+    "section": "Box Scores",
+    "text": "Box Scores\n\n\n\nBox Score in a Newspaper"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#war",
+    "href": "posts/07_WAR/07_WAR.html#war",
+    "title": "7: WAR",
+    "section": "WAR",
+    "text": "WAR\n\n\n\n\n\n\nWAR\n\n\n\nWAR (wins above replacement) gives an analyst a sense of how much a player contributes to the team versus a replacement-level player.\n\n\n\n\n\n\n\n\nTwo Types of WAR\n\n\n\nThere are two main sources that calculate WAR, but with different formulas:\n\nBaseball Reference\nFanGraphs"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#bwar",
+    "href": "posts/07_WAR/07_WAR.html#bwar",
+    "title": "7: WAR",
+    "section": "bWAR",
+    "text": "bWAR\nThe WAR calculation over at Baseball Reference is called bWAR, and the overall scheme is\n\\[bWar = (P_{\\text{runs}} - A_{\\text{runs}}) + (A_{\\text{runs}} - R_{\\text{runs}})\\]\nwhose terms are computed with factors such as\n\nbatting runs\nbaserunning runs\nruns added or lost due to grounding into double plays\nfielding runs\npositional adjustment runs\n\nThese factors are compared to the league average where a value of 0 represents an average player.\n\n\n\n\n\n\nwOBA\n\n\n\n\n\nBatting runs depends on weighted runs above average\n\\[wRAA = \\frac{wOBA - 0.320}{1.25}*(AB + BB + HBP + SF + SH)\\]\nwhere\n\\[wOBA = \\frac{ \\alpha_{1}*uBB + \\alpha_{2}*HBP + \\alpha_{3}*1B + \\alpha_{4}*2B + \\alpha_{5}*3B + \\alpha_{6}*HR + \\alpha_{7}*SB - \\alpha_{8}*CS }{ AB + BB - IBB + HBP + SF }\\]"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#fwar",
+    "href": "posts/07_WAR/07_WAR.html#fwar",
+    "title": "7: WAR",
+    "section": "fWAR",
+    "text": "fWAR\nThe FanGraphs formula for position players involves offense, defense, and baserunning.\n\\[fWAR = wRAA + UZR + position + \\frac{20}{600}*PA\\]\n\nruns above average\nultimate zone rating\nultimate base running\npark factors"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#comparing-current-players",
+    "href": "posts/07_WAR/07_WAR.html#comparing-current-players",
+    "title": "7: WAR",
+    "section": "Comparing Current Players",
+    "text": "Comparing Current Players\n\n\nAaron Judge\n\nbWAR: 10.6\nfWAR: 11.4\n\n\n\nShohei Ohtani\n\nbWAR: 9.6\nfWAR: 9.5\n\n\n\nSandy Alcantara\n\nbWAR: 8.1\nfWAR: 5.7"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#comparing-careers",
+    "href": "posts/07_WAR/07_WAR.html#comparing-careers",
+    "title": "7: WAR",
+    "section": "Comparing Careers",
+    "text": "Comparing Careers\n\n\nAaron Judge\n\nbWAR: 36.9\nfWAR: 36.5\n\n\n\nShohei Ohtani\n\nbWAR: 24.7\nfWAR: 13.3\n\n\n\nSandy Alcantara\n\nbWAR: 16.7\nfWAR: 13.2"
+  },
+  {
+    "objectID": "posts/07_WAR/07_WAR.html#references",
+    "href": "posts/07_WAR/07_WAR.html#references",
+    "title": "7: WAR",
+    "section": "References",
+    "text": "References\n\nhttps://www.baseball-reference.com/about/war_explained.shtml\nhttps://en.wikipedia.org/wiki/Box_score_(baseball)\nhttps://www.fangraphs.com/leaders/war\nhttps://sabr.org/sabermetrics\nhttps://en.wikipedia.org/wiki/Wins_Above_Replacement"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html",
+    "href": "posts/08_Odds/08_Odds.html",
+    "title": "8: Odds",
+    "section": "",
+    "text": "The odds that an event occurs with probability \\(p\\) (\\(0 \\leq p \\leq 1\\)) is\n\\[\\text{odds = } \\frac{p}{1-p}\\]\nIn gambling, we often see moneyline odds (AKA American odds) per $100 bet. For example,\n\nodds: 4 to 1\nmoneyline odds: +400\ni.e. a $100 bet could win $400"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#todays-moneyline-odds",
+    "href": "posts/08_Odds/08_Odds.html#todays-moneyline-odds",
+    "title": "8: Odds",
+    "section": "Today’s Moneyline Odds",
+    "text": "Today’s Moneyline Odds\nBetMGM is the official gambling partner of Major League Baseball"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#world-series-odds",
+    "href": "posts/08_Odds/08_Odds.html#world-series-odds",
+    "title": "8: Odds",
+    "section": "World Series Odds",
+    "text": "World Series Odds\nWebsites like VegasInsider present futures."
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#black-sox",
+    "href": "posts/08_Odds/08_Odds.html#black-sox",
+    "title": "8: Odds",
+    "section": "Black Sox",
+    "text": "Black Sox\nIn 1919, eight players of the Chicago White Sox were accusing of throwing games, including the World Series.\n\n\n\nBlack Sox Scandal"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#pete-rose",
+    "href": "posts/08_Odds/08_Odds.html#pete-rose",
+    "title": "8: Odds",
+    "section": "Pete Rose",
+    "text": "Pete Rose\nIn 1986, Pete Rose—the all-time MLB leader in hits and manager of the Cincinnati Reds—was accused to betting on their own baseball games.\n\nbanned from MLB\nnot reinstated; not in the Hall of Fame\n\n\n\n\nPete Rose"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#presence",
+    "href": "posts/08_Odds/08_Odds.html#presence",
+    "title": "8: Odds",
+    "section": "Presence",
+    "text": "Presence\nHere is a map of online gambling in the United States"
+  },
+  {
+    "objectID": "posts/08_Odds/08_Odds.html#references",
+    "href": "posts/08_Odds/08_Odds.html#references",
+    "title": "8: Odds",
+    "section": "References",
+    "text": "References\n\nBetMGM — official gambling partner of MLB\nOdds Wikipedia article\nOddshark\nVegasInsider"
   }
 ]

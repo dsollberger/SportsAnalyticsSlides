@@ -1,0 +1,64 @@
+---
+title: "8: Odds"
+author: "Derek Sollberger"
+date: "2022-10-18"
+# format: 
+#   revealjs:
+#     scrollable: true
+format: html
+# server: shiny
+---
+## Odds
+
+The *odds* that an event occurs with probability $p$ ($0 \leq p \leq 1$) is
+
+$$\text{odds = } \frac{p}{1-p}$$
+
+In gambling, we often see **moneyline odds** (AKA *American odds*) per \$100 bet.  For example, 
+
+- odds: 4 to 1
+- moneyline odds: +400
+- i.e. a \$100 bet could win \$400
+
+## Today's Moneyline Odds
+
+BetMGM is the official gambling partner of Major League Baseball
+
+![](20221018.png)
+
+## World Series Odds
+
+Websites like VegasInsider present futures.
+
+![](20221018_ws.png)
+
+
+## Black Sox
+
+In 1919, eight players of the Chicago White Sox were accusing of throwing games, including the World Series.
+
+![Black Sox Scandal](Eight_men_banned.png)
+
+## Pete Rose
+
+In 1986, Pete Rose---the all-time MLB leader in hits and manager of the Cincinnati Reds---was accused to betting on their own baseball games.
+
+* banned from MLB
+* not reinstated; not in the Hall of Fame
+
+![Pete Rose](Pete_Rose.png)
+
+## Presence
+
+Here is a map of online gambling in the United States
+
+![](online_gambling.png)
+
+
+
+## References
+
+- BetMGM --- official gambling partner of MLB
+- [Odds](https://en.wikipedia.org/wiki/Odds) Wikipedia article
+- [Oddshark](https://www.oddsshark.com/mlb/odds)
+- [VegasInsider](https://www.vegasinsider.com/mlb/odds/futures/)

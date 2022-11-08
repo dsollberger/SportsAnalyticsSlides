@@ -1,0 +1,191 @@
+---
+title: "11: Confidence Intervals"
+author: "Derek Sollberger"
+date: "2022-11-08"
+format: 
+  html:
+    toc: true
+---
+
+```{r}
+library("infer")
+library("moderndive")
+library("patchwork") #easy graph layouts
+library("tidyverse")
+```
+
+Source:  **Statistical Inference via Data Science:** *A Modern Dive into R and the Tidyverse*
+
+* Chapter 8: Bootstrapping and Confidence Intervals
+* [https://moderndive.com/8-confidence-intervals.html](https://moderndive.com/8-confidence-intervals.html)
+
+# Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.
+
+```{r}
+
+# df <- Teams |>
+#   filter(yearID >= 1990) |>
+#   filter(yearID < 2000)
+# 
+# readr::write_csv(df, "baseball_data_90s.csv")
+
+df <- readr::read_csv("baseball_data_90s.csv")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+colnames(df)
+```
+
+## One Sample
+
+```{r}
+HR_sample <- df |> select(HR)
+```
+
+
+```{r}
+p1 <- HR_sample |>
+  ggplot(aes(x = HR)) +
+  geom_histogram(binwidth = 5, color = "black", fill = "blue") +
+  labs(title = "Distribution of Home Runs",
+       subtitle = "Based on a sample of data",
+       caption = "Spark 01") +
+  theme_minimal()
+
+# print
+p1
+```
+
+## Resampling
+
+Using the available sample of data to fabricate another sample is called *resampling*.
+
+```{r}
+HR_resampled <- HR_sample |>
+  sample_n(replace = TRUE, size = nrow(HR_sample))
+```
+
+```{r}
+p2 <- HR_resampled |>
+  ggplot(aes(x = HR)) +
+  geom_histogram(binwidth = 5, color = "black", fill = "blue") +
+  labs(title = "Distribution of Home Runs",
+       subtitle = "Based on a sample of data",
+       caption = "Spark 01") +
+  theme_minimal()
+
+# print
+p2
+```
+
+```{r}
+# patchwork
+p1 + p2
+```
+
+## Resampling Many Times
+
+```{r}
+summary(HR_sample)
+```
+
+
+Suppose now that we have each person in a 23-student classroom repeat the act of drawing that home run data with replacement.
+
+```{r}
+HR_resampled_many <- HR_sample |>
+  rep_sample_n(replace = TRUE, reps = 23, size = nrow(HR_sample))
+```
+
+```{r}
+HR_resampled_many %>%
+  group_by(replicate) %>%
+  mutate(mean_HR = mean(HR)) %>%
+  ungroup() %>%
+  select(replicate, mean_HR) %>%
+  distinct() %>%
+  ggplot(aes(x = mean_HR)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "blue") +
+  labs(title = "Resampling Results",
+       subtitle = "N = 23 resamples",
+       caption = "Source: Modern Dive")
+```
+
+Out of curiosity, let us push this process to $N = 1337$ resamples.
+
+```{r}
+HR_resampled_many <- HR_sample |>
+  rep_sample_n(replace = TRUE, reps = 1337, size = nrow(HR_sample))
+```
+
+```{r}
+HR_resampled_many %>%
+  group_by(replicate) %>%
+  mutate(mean_HR = mean(HR)) %>%
+  ungroup() %>%
+  select(replicate, mean_HR) %>%
+  distinct() %>%
+  ggplot(aes(x = mean_HR)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "blue") +
+  labs(title = "Resampling Results",
+       subtitle = "N = 23 resamples",
+       caption = "Source: Modern Dive")
+```
+
+# Using the Infer package
+
+The `infer` package streamlines the process of resampling (with replacement) to build a **bootstrap distribution**.
+
+```{r}
+bootstrap_distribution <- df |>
+  specify(response = HR) |>
+  generate(reps = 1337, type = "bootstrap") |>
+  calculate(stat = "mean")
+```
+
+The folks who made the `infer` package provide a `visualize` helper function to quickly view the bootstrap distribution.
+
+```{r}
+visualize(bootstrap_distribution)
+```
+
+We can get the values of the endpoints of the confidence interval with the `get_ci` function.
+
+```{r}
+ci_endpoints <- bootstrap_distribution |> get_ci(level = 0.95, type = "percentile")
+
+# print
+ci_endpoints
+```
+
+We can also visualize the confidence interval on top of the bootstrap distribution.
+
+```{r}
+visualize(bootstrap_distribution) +
+  shade_ci(ci_endpoints, color = "#DAA900", fill = "#002856") +
+  labs(title = "Bootstrap Distribution of Home Runs",
+       subtitle = "95% confidence interval shaded",
+       caption = "Spark 01")
+```
+
+We are 95 percent confident that the true average number of home runs hit by a team in a season is in between 144 and 154 home runs.

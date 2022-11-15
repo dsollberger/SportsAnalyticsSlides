@@ -1,0 +1,165 @@
+---
+title: "12: Hypothesis Testing"
+author: "Derek Sollberger"
+date: "2022-11-15"
+format: 
+  html:
+    toc: true
+---
+
+```{r}
+library("infer")
+library("moderndive")
+library("patchwork") #easy graph layouts
+library("tidyverse")
+```
+
+Source:  **Statistical Inference via Data Science:** *A Modern Dive into R and the Tidyverse*
+
+* Chapter 9: Hypothesis Testing
+* [https://moderndive.com/9-hypothesis-testing.html](https://moderndive.com/9-hypothesis-testing.html)
+
+# Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.
+
+```{r}
+
+# df <- Teams |>
+#   filter(yearID >= 1990) |>
+#   filter(yearID < 2000)
+# 
+# readr::write_csv(df, "baseball_data_90s.csv")
+
+df <- readr::read_csv("baseball_data_90s.csv")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+colnames(df)
+```
+
+## Example 1
+
+* explanatory variable (x): `lgID`
+* response variable (y): `HR`
+
+* null hypothesis: Both the National and American Leagues had the same average number of home runs.
+* alternative hypothesis: The American League had a higher average number of home runs.
+
+```{r}
+# boxplot
+df %>%
+  filter(lgID == "NL" | lgID == "AL") %>%
+  ggplot(aes(x = lgID, y = HR)) +
+  geom_boxplot(aes(fill = lgID)) + 
+  labs(title = "Home Runs by League",
+       subtitle = "1990s baseball",
+       caption = "Spark 01")
+```
+
+```{r}
+# compute observed difference in means
+obs_diff_means <- df %>%
+  filter(lgID == "NL" | lgID == "AL") %>%
+  specify(formula = HR ~ lgID) %>%
+  calculate(stat = "diff in means", order = c("AL", "NL"))
+
+# print
+obs_diff_means
+```
+
+
+```{r}
+# build a null distribution
+null_distribution <- df %>%
+  filter(lgID == "NL" | lgID == "AL") %>%
+  specify(formula = HR ~ lgID) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("AL", "NL"))
+```
+
+```{r}
+# visualize the p-value
+visualize(null_distribution, bins = 10) + 
+  shade_p_value(obs_stat = obs_diff_means, direction = "greater")
+```
+
+```{r}
+# get p-value
+null_distribution %>%
+  get_p_value(obs_stat = obs_diff_means, direction = "greater")
+```
+
+Since the p-value is less than 0.05, we *reject* the claim that the two leagues had the same average number of home runs.
+
+# Example 2
+
+* explanatory variable (x): `franchID`
+* response variable (y): `W`
+
+* null hypothesis: Both the Dodgers and Giants averaged the same number of wins.
+* alternative hypothesis: The Dodgers had a higher average number of wins than the Giants.
+
+```{r}
+# boxplot
+df %>%
+  filter(franchID == "LAD" | franchID == "SFG") %>%
+  ggplot(aes(x = franchID, y = W)) +
+  geom_boxplot(aes(fill = franchID)) + 
+  labs(title = "Comparing the Dodgers and the Giants",
+       subtitle = "1990s baseball",
+       caption = "Spark 01")
+```
+
+```{r}
+# compute observed difference in means
+obs_diff_means <- df %>%
+  filter(franchID == "LAD" | franchID == "SFG") %>%
+  specify(formula = W ~ franchID) %>%
+  calculate(stat = "diff in means", order = c("LAD", "SFG"))
+
+# print
+obs_diff_means
+```
+
+```{r}
+# build a null distribution
+null_distribution <- df %>%
+  filter(franchID == "LAD" | franchID == "SFG") %>%
+  specify(formula = W ~ franchID) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("LAD", "SFG"))
+```
+
+```{r}
+# visualize the p-value
+visualize(null_distribution, bins = 10) + 
+  shade_p_value(obs_stat = obs_diff_means, direction = "greater")
+```
+
+```{r}
+# get p-value
+null_distribution %>%
+  get_p_value(obs_stat = obs_diff_means, direction = "greater")
+```
+Since the p-value is greater than 0.05, we *fail to reject* the claim that the Dodgers and the Giants had the same average number of wins.

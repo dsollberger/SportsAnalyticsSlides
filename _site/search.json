@@ -39,7 +39,7 @@
     "href": "slides.html",
     "title": "SportsAnalyticsSlides",
     "section": "",
-    "text": "Derek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 15, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
+    "text": "02_-_Exploring Data\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n03_-_Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n4: Barplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n5: Scatterplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n10: Scandals\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n13: Clustering\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n12: Hypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\nNov 15, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n11: Confidence Intervals\n\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n9: Coefficient of Determination\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n8: Odds\n\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n7: WAR\n\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/02_-_Exploring Data/02_exploring_data.html#look-at-the-data",
@@ -558,5 +558,166 @@
     "title": "13: Clustering",
     "section": "Clustering with TidyModels (modern code)",
     "text": "Clustering with TidyModels (modern code)\n\n# remember to use numerical columns\ndf_num <- df |>\n  select(H, HR)\n\n# try k = 1 cluster, k = 2 clusters, etc.\nkclusts <- \n  tibble(k = 1:9) %>%\n  mutate(\n    kclust = map(k, ~kmeans(df_num, .x)),\n    tidied = map(kclust, tidy),\n    glanced = map(kclust, glance),\n    augmented = map(kclust, augment, df_num)\n  )\n\n\n# visualizing 9 possibilities\nkclusts |>\n  unnest(cols = c(augmented)) |>\n  ggplot(aes(x = H, y = HR)) +\n  geom_point(aes(color = .cluster), alpha = 0.75) +\n  facet_wrap( ~ k) +\n  theme_minimal()\n\n\n\n\n\n# Scree plot\nkclusts |>\n  unnest(cols = c(glanced)) |>\n  ggplot(aes(k, tot.withinss)) +\n  geom_line() +\n  geom_point() +\n  labs(title = \"Scree Plot\",\n       subtitle = \"for k-means clustering\",\n       caption = \"Spark 01\",\n       x = \"number of clusters\",\n       y = \"total within SSE\") +\n  scale_x_continuous(breaks = 1:9) +\n  theme_minimal()\n\n\n\n\nAfter finding the “elbow” for the recommended number of clusters\n\n# visualizing clustering\nkclusts |>\n  unnest(cols = c(augmented)) |>\n  filter(k == 3) |> #put number of clusters here\n  ggplot(aes(x = H, y = HR)) +\n  geom_point(aes(color = .cluster), alpha = 0.75) +\n  labs(title = \"MLB Offense\",\n       subtitle = \"1990s\",\n       caption = \"Spark 01\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html",
+    "href": "posts/01_syllabus/01_introductions.html",
+    "title": "1: Introduction",
+    "section": "",
+    "text": "Fall 2023\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    25\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    35\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    37\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#introducting-the-presenter",
+    "href": "posts/01_syllabus/01_introductions.html#introducting-the-presenter",
+    "title": "1: Introduction",
+    "section": "Introducting the Presenter",
+    "text": "Introducting the Presenter\n\n\n\nLecturer: Derek Sollberger\n\nI go by “Derek” or “teacher”\n\nBA in Applied Mathematics, UC Berkeley\nMS in Applied Mathematics, CSULB\nMS in Applied Mathematics, UC Merced"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#introducting-the-presenter-1",
+    "href": "posts/01_syllabus/01_introductions.html#introducting-the-presenter-1",
+    "title": "1: Introduction",
+    "section": "Introducting the Presenter",
+    "text": "Introducting the Presenter\n\n\n\n\n\nContinuing Lecturer in Applied Mathematics\n10+ years of teaching at UC Merced\nCourses:\n\nBio 18: Data Science\nBio 175: Biostatistics\nBio 184: Python for Bioinformatics\nMath 32: Probability and Statistics"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#current-research-in-pedagogy",
+    "href": "posts/01_syllabus/01_introductions.html#current-research-in-pedagogy",
+    "title": "1: Introduction",
+    "section": "Current Research in Pedagogy",
+    "text": "Current Research in Pedagogy\n\n\n\n\n\nactive learning\ncomputer programming\nflipped classrooms"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#identity-statement",
+    "href": "posts/01_syllabus/01_introductions.html#identity-statement",
+    "title": "1: Introduction",
+    "section": "Identity Statement",
+    "text": "Identity Statement\n\n\n\nOriginally from Los Angeles\nMath: easier to understand through graphs\nComputer Programming: years of experience with R, Python, MATLAB, PHP, HTML, etc.\nLearning: drawn to puzzles and manageable tasks\nPersonality: shy, introvert"
+  },
+  {
+    "objectID": "posts/02_Exploring Data/02_exploring_data.html",
+    "href": "posts/02_Exploring Data/02_exploring_data.html",
+    "title": "02_-_Exploring Data",
+    "section": "",
+    "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\nlibrary(\"tidyverse\")\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "posts/02_Exploring Data/02_exploring_data.html#load-the-tidyverse",
+    "href": "posts/02_Exploring Data/02_exploring_data.html#load-the-tidyverse",
+    "title": "02_-_Exploring Data",
+    "section": "",
+    "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\nlibrary(\"tidyverse\")\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+  },
+  {
+    "objectID": "posts/02_Exploring Data/02_exploring_data.html#load-the-data",
+    "href": "posts/02_Exploring Data/02_exploring_data.html#load-the-data",
+    "title": "02_-_Exploring Data",
+    "section": "Load the Data",
+    "text": "Load the Data\nSince we have CSV files (comma-separated values), the read_csv() command in the readr package will be convenient here. I tend to save data set into a variable df (stands for “data frame”).\nToday’s data set comes from Baseball Reference. In particular, we are looking at the team batting statistics for the 2021 season.\n\ndf &lt;- readr::read_csv(\"baseball_2021_batting.csv\")\n\nRows: 32 Columns: 29\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (1): Tm\ndbl (28): #Bat, BatAge, R/G, G, PA, AB, R, H, 2B, 3B, HR, RBI, SB, CS, BB, S...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "posts/02_Exploring Data/02_exploring_data.html#look-at-the-data",
+    "href": "posts/02_Exploring Data/02_exploring_data.html#look-at-the-data",
+    "title": "02_-_Exploring Data",
+    "section": "Look at the Data",
+    "text": "Look at the Data\nOne way to get a quick look at the data set is with the head() command (outputs the first few rows and columns).\n\nhead(df)\n\n# A tibble: 6 × 29\n  Tm         `#Bat` BatAge `R/G`     G    PA    AB     R     H  `2B`  `3B`    HR\n  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 Arizona D…     64   28.9  4.19   162  6144  5489   679  1297   308    31   144\n2 Atlanta B…     56   28.2  4.91   161  6056  5363   790  1307   269    20   239\n3 Baltimore…     62   26.7  4.07   162  5983  5420   659  1296   266    15   195\n4 Boston Re…     56   28    5.12   162  6122  5495   829  1434   330    23   219\n5 Chicago C…     69   29.1  4.35   162  5972  5306   705  1255   225    26   210\n6 Chicago W…     47   28    4.91   162  6084  5357   796  1373   275    22   190\n# ℹ 17 more variables: RBI &lt;dbl&gt;, SB &lt;dbl&gt;, CS &lt;dbl&gt;, BB &lt;dbl&gt;, SO &lt;dbl&gt;,\n#   BA &lt;dbl&gt;, OBP &lt;dbl&gt;, SLG &lt;dbl&gt;, OPS &lt;dbl&gt;, `OPS+` &lt;dbl&gt;, TB &lt;dbl&gt;,\n#   GDP &lt;dbl&gt;, HBP &lt;dbl&gt;, SH &lt;dbl&gt;, SF &lt;dbl&gt;, IBB &lt;dbl&gt;, LOB &lt;dbl&gt;\n\n\nWe can also look at the structure of a data frame with the str() command. In particular, this view allows us to quickly see which variables are numerical and which are categorical.\n\nstr(df, give.attr = FALSE)\n\nspc_tbl_ [32 × 29] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ Tm    : chr [1:32] \"Arizona Diamondbacks\" \"Atlanta Braves\" \"Baltimore Orioles\" \"Boston Red Sox\" ...\n $ #Bat  : num [1:32] 64 56 62 56 69 47 55 48 45 49 ...\n $ BatAge: num [1:32] 28.9 28.2 26.7 28 29.1 28 28.9 26.7 28.1 28.1 ...\n $ R/G   : num [1:32] 4.19 4.91 4.07 5.12 4.35 4.91 4.85 4.43 4.59 4.3 ...\n $ G     : num [1:32] 162 161 162 162 162 162 162 162 161 162 ...\n $ PA    : num [1:32] 6144 6056 5983 6122 5972 ...\n $ AB    : num [1:32] 5489 5363 5420 5495 5306 ...\n $ R     : num [1:32] 679 790 659 829 705 796 786 717 739 697 ...\n $ H     : num [1:32] 1297 1307 1296 1434 1255 ...\n $ 2B    : num [1:32] 308 269 266 330 225 275 295 248 275 236 ...\n $ 3B    : num [1:32] 31 20 15 23 26 22 13 22 34 37 ...\n $ HR    : num [1:32] 144 239 195 219 210 190 222 203 182 179 ...\n $ RBI   : num [1:32] 644 762 632 783 672 757 756 686 709 675 ...\n $ SB    : num [1:32] 43 59 54 40 86 57 36 109 76 88 ...\n $ CS    : num [1:32] 16 19 23 21 37 20 24 17 23 25 ...\n $ BB    : num [1:32] 537 549 451 512 502 586 553 453 491 490 ...\n $ SO    : num [1:32] 1465 1453 1454 1386 1596 ...\n $ BA    : num [1:32] 0.236 0.244 0.239 0.261 0.237 0.256 0.249 0.238 0.249 0.242 ...\n $ OBP   : num [1:32] 0.309 0.319 0.304 0.328 0.312 0.336 0.328 0.303 0.317 0.308 ...\n $ SLG   : num [1:32] 0.382 0.435 0.402 0.449 0.407 0.422 0.431 0.407 0.414 0.399 ...\n $ OPS   : num [1:32] 0.692 0.754 0.705 0.777 0.719 0.758 0.759 0.71 0.731 0.707 ...\n $ OPS+  : num [1:32] 86 98 91 106 93 106 95 94 87 95 ...\n $ TB    : num [1:32] 2099 2333 2177 2467 2162 ...\n $ GDP   : num [1:32] 99 81 105 100 133 139 129 105 98 113 ...\n $ HBP   : num [1:32] 54 67 65 61 92 78 105 64 58 44 ...\n $ SH    : num [1:32] 32 32 14 10 40 24 35 20 48 17 ...\n $ SF    : num [1:32] 28 43 31 42 30 39 45 36 36 50 ...\n $ IBB   : num [1:32] 24 36 12 22 17 10 22 18 24 8 ...\n $ LOB   : num [1:32] 1152 1072 1046 1093 1019 ...\n\n\nAnother convenient tool for our programming purposes is looking at the column names (i.e. variable names that we need to type later)\n\ncolnames(df)\n\n [1] \"Tm\"     \"#Bat\"   \"BatAge\" \"R/G\"    \"G\"      \"PA\"     \"AB\"     \"R\"     \n [9] \"H\"      \"2B\"     \"3B\"     \"HR\"     \"RBI\"    \"SB\"     \"CS\"     \"BB\"    \n[17] \"SO\"     \"BA\"     \"OBP\"    \"SLG\"    \"OPS\"    \"OPS+\"   \"TB\"     \"GDP\"   \n[25] \"HBP\"    \"SH\"     \"SF\"     \"IBB\"    \"LOB\""
+  },
+  {
+    "objectID": "posts/02_Exploring Data/02_exploring_data.html#measures-of-centrality",
+    "href": "posts/02_Exploring Data/02_exploring_data.html#measures-of-centrality",
+    "title": "02_-_Exploring Data",
+    "section": "Measures of Centrality",
+    "text": "Measures of Centrality\nNow let us practice computing means and medians of some of the numerical data.\n\nmean(df$HR)\n\n[1] 377.6875\n\n\nDuring the 2021 season, MLB teams hit about 378 home runs on average.\n\nmedian(df$HR)\n\n[1] 198\n\n\nDuring the 2021 season, the median number of home runs per team was 198.\n\nmean(df$SB)\n\n[1] 140.625\n\n\nDuring the 2021 season, MLB teams stole about 141 bases on average.\n\nmedian(df$SB)\n\n[1] 75\n\n\nDuring the 2021 season, the median number of stolen bases per team was 75."
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#sports-analytics",
+    "href": "posts/01_syllabus/01_introductions.html#sports-analytics",
+    "title": "1: Introduction",
+    "section": "",
+    "text": "Fall 2023\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    25\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    35\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    37\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#lecturer",
+    "href": "posts/01_syllabus/01_introductions.html#lecturer",
+    "title": "1: Introduction",
+    "section": "Lecturer",
+    "text": "Lecturer\n\n\n\n\n\nContinuing Lecturer in Applied Mathematics\n10+ years of teaching at UC Merced\nCourses:\n\nBio 18: Data Science\nBio 175: Biostatistics\nBio 184: Python for Bioinformatics\nMath 32: Probability and Statistics\nSpark 10: Sports Analytics"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#before-lecture",
+    "href": "posts/01_syllabus/01_introductions.html#before-lecture",
+    "title": "1: Introduction",
+    "section": "Before Lecture",
+    "text": "Before Lecture\n\n5 percent of semester grade\nreview or preview of statistics ideas\nmust be completed before class\nmay be repeated until correct\nlowest 2 scores dropped"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#essays",
+    "href": "posts/01_syllabus/01_introductions.html#essays",
+    "title": "1: Introduction",
+    "section": "Essays",
+    "text": "Essays\n\n20 percent of semester grade\nmost essays will be assigned in segments\n\ntopic proposal\nrough draft\nfinal version\n\none-page maximum per essay\nlowest 2 scores dropped\n\n\n\n\n\n\n\nGrading Rubric\n\n\n\n\n\nEssays—the ones deemed ‘final’—will be graded with the following rubric.\n\n\n\ngrading rubric"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#grammar-review",
+    "href": "posts/01_syllabus/01_introductions.html#grammar-review",
+    "title": "1: Introduction",
+    "section": "Grammar Review",
+    "text": "Grammar Review\n\n5 percent of semester grade\nreview of elementary English grammar\nmay be repeated until correct\nlowest 2 scores dropped"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#learnr-assignments",
+    "href": "posts/01_syllabus/01_introductions.html#learnr-assignments",
+    "title": "1: Introduction",
+    "section": "LearnR Assignments",
+    "text": "LearnR Assignments\n\n20 percent of semester grade\nThis is where the computer programming learning takes place\nApps are designed to give instant feedback\nlowest score dropped"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#grading-rubric",
+    "href": "posts/01_syllabus/01_introductions.html#grading-rubric",
+    "title": "1: Introduction",
+    "section": "Grading Rubric",
+    "text": "Grading Rubric\nEssays—the ones deemed ‘final’—will be graded with the following rubric.\n\n\n\ngrading rubric\n\n\n:::"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#collaboration",
+    "href": "posts/01_syllabus/01_introductions.html#collaboration",
+    "title": "1: Introduction",
+    "section": "Collaboration",
+    "text": "Collaboration\n\n25 percent of semester grade\nThis is where the data science learning takes place\nstudents will be present and active in class\nsports groups will work on assigned data-driven tasks"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#presentation",
+    "href": "posts/01_syllabus/01_introductions.html#presentation",
+    "title": "1: Introduction",
+    "section": "Presentation",
+    "text": "Presentation\n\n25 percent of semester grade\nsports groups will turn in deliverables (code output)\nsports groups will present their findings and progress weekly\naudience members will provide feedback"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#administrative",
+    "href": "posts/01_syllabus/01_introductions.html#administrative",
+    "title": "1: Introduction",
+    "section": "Administrative",
+    "text": "Administrative\n\n\n\n\n\n\nProgram Learning Outcomes\n\n\n\n\n\nAs aligned with the mission of the General Education Program at UC Merced, this Spark section meets the following PLOs:\n\nLife at the Research University: Asking Questions\nReasoning: Thinking Critically\nCommunication: Explaining and Persuading\n\n\n\n\n\n\n\n\n\n\nCourse Learning Outcomes\n\n\n\n\n\n\nUse descriptive statistics to organize, summarize, and analyze data.\nObtain substantial amounts of data about sports athletes and franchises\nArgue about the validity and value of sports metrics\nOrganize information into engaging narratives\n\n\n\n\n\n\n\n\n\n\nStudent Accessibility Services\n\n\n\n\n\nUniversity of California, Merced is committed to creating learning environments that are accessible to all. If you anticipate or experience physical or academic barriers based on a disability, please feel welcome to contact me privately so we can discuss options. In addition, please contact Student Accessibility Services (SAS) at (209) 228-6996 or access@ucmerced.edu as soon as possible to explore reasonable accommodations. All accommodations must have prior approval from Student Accessibility Services on the basis of appropriate documentation.\nIf you anticipate or experience barriers due to pregnancy, temporary medical condition, or injury, please feel welcome to contact me so we can discuss options. You are encouraged to contact the Dean of Students for support and resources at (209) 228-3633 or https://studentaffairs.ucmerced.edu/dean-students.\n\n\n\n\n\n\n\n\n\nAcademic Integrity Policy\n\n\n\n\n\nAcademic integrity is the foundation of an academic community and without it none of the educational or research goals of the university can be achieved. All members of the community are responsible for its academic integrity. Existing policies forbid cheating on examinations, plagiarism and other forms of academic dishonesty. The UC Merced Academic Honesty Policy can be found on the Student Conduct website. Infractions against academic integrity will incur consequences such as an “F” on the assignment/exam and/or a report to the Academic Senate (http://studentconduct.ucmerced.edu)"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#cooperative-classroom",
+    "href": "posts/01_syllabus/01_introductions.html#cooperative-classroom",
+    "title": "1: Introduction",
+    "section": "Cooperative Classroom",
+    "text": "Cooperative Classroom\nLearning in a cooperative environment should be stimulating, demanding, and fair. Because this approach to learning is different from the competitive classroom structure that many other courses used to be based on, it is important for us to be clear about mutual expectations. Below are my expectations for students in this class. This set of expectations is intended to maximize debate and exchange of ideas in an atmosphere of mutual respect while preserving individual ownership of ideas and written words. If you feel you do not understand or cannot agree to these expectations, you should discuss this with your instructor and classmates.\n\nStudents are expected to work cooperatively with other members of the class and show respect for the ideas and contributions of other people.\nWhen working as part of a group, students should strive to be good contributors to the group, listen to others, not dominate, and recognize the contributions of others. Students should try to ensure that everyone in the group is welcome to contribute and recognize that everyone contributes in different ways to a group process.\nStudents should explore data, make observations, and develop inferences as part of a group. If you use material from published sources, you must provide appropriate attribution.\n\n\n\n(Students will be asked to acknowledge this document in an online form.)\nThis document has been adapted from Scientific Teaching by Jo Handelsman, Sarah Miller, and Christine Pfund\n\n\n\n\nScientific Teaching"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#pep-talk",
+    "href": "posts/01_syllabus/01_introductions.html#pep-talk",
+    "title": "1: Introduction",
+    "section": "Pep Talk",
+    "text": "Pep Talk\nLearning R can be difficult at first—it is like learning a new language, just like Spanish, French, or Chinese. Hadley Wickham—the chief data scientist at RStudio and the author of some amazing R packages you will be using like ggplot2—made this wise observation:\n\n\n\n\n\n\nWisdom from Hadley Wickham\n\n\n\n\n\nIt’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.\n\n\n\nIf you are finding yourself taking way too long hitting your head against a wall and not understanding, take a break, talk to classmates, ask questions … e-mail [Derek], etc. I promise you can do this.\n—Andrew Heiss, Georgia State University"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#inclusion-statement",
+    "href": "posts/01_syllabus/01_introductions.html#inclusion-statement",
+    "title": "1: Introduction",
+    "section": "Inclusion Statement",
+    "text": "Inclusion Statement\nI value all students regardless of their background, country of origin, race, religion, ethnicity, gender, sexual orientation, disability status, etc. and am committed to providing a climate of excellence and inclusiveness within all aspects of the course. If there are aspects of your culture or identity that you would like to share with me as they relate to your success in this class, I am happy to meet to discuss. Likewise, if you have any concerns in this area or facing any special issues or challenges, you are encouraged to discuss the matter with me (set up a meeting by e-mail) with an assurance of full confidentiality (only exception being mandatory reporting of academic integrity code violations or sexual harassment)."
   }
 ]

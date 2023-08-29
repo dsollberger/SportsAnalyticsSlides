@@ -1,0 +1,14 @@
+{
+  "hash": "73eea640daba0191d98826075e5d4af4",
+  "result": {
+    "markdown": "---\ntitle: \"2: Quarto\"\nauthor: \"Derek Sollberger\"\ndate: \"2023-08-29\"\nformat: \n  html:\n    toc: true\n    theme: cerulean\n# format: \n#   revealjs:\n#     scrollable: true\n---\n\n::: {.cell}\n\n:::\n\n\n# Introduction to Quarto\n\nQuarto is a markdown language that we can use here in RStudio to\n\n* write R code\n* include math formulas\n* type reports and descriptions\n* and more\n\n# Learner Profiles\n\n\n\n## Chip\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n![Chip](Chip.png)\n:::\n\n::: {.column width=\"50%\"}\n\n* major: chemistry\n* from: Milipitas\n* goal: gain leadership skills\n* very enthusiastic about university, but is not sure what to expect\n\n:::\n\n::::\n\n## Dale\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n![Dale](Dale.png)\n:::\n\n::: {.column width=\"50%\"}\n\n* major: psychology\n* from: Rancho Cordova\n* goal: party every weekend\n* happy to be an adult and start a new stage of life in Merced\n\n:::\n\n::::\n\n## Gadget\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n![Gadget](Gadget.png)\n:::\n\n::: {.column width=\"50%\"}\n\n* major: mechanical engineering\n* from: West Covina\n* goal: join a robotics club\n* has a lot of computer programming experience, but is not as confident in mathematics\n\n:::\n\n::::\n\n## Monty\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n![Monty](Monty.png)\n:::\n\n::: {.column width=\"50%\"}\n\n* major: biology\n* from: Atwater\n* goal: get the cheese!\n* has no computer programming experience, but is willing to learn\n\n:::\n\n::::\n\n\n\n# Textbooks\n\nMaterials from this class come from sources such as the following textbooks\n\n1. *R for Data Science* by **Hadley Wickham**\n2. *Statistical Inference via Data Science* by Chester Ismay\n3. *Analyzing Baseball Data with R* by **Max Marchi**\n4. *Basketball Data Science* by Paola Zuccolotto\n\n![textbooks](textbooks.png)\n\n# Today's Assignments\n\n## Group Page\n\n* Create a page in CatCourses in your group space\n    \n    + include your names and e-mail addresses\n    + come up with a creative name for your group\n\n## Introductions\n    \n* Create a Quarto slideshow to introduce yourselves\n\n    + a slide for each group member: name, major, goal(s)\n    + a slide of song recommendations\n    \n        - song titles in *italics*\n        - song artists in **boldface**\n\n\n\n\n\n\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n\t\n:::\n\n::: {.column width=\"50%\"}\n\n:::\n\n::::\n\n::::: {.panel-tabset}\n\n\n\n:::::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

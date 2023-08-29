@@ -1,0 +1,18 @@
+{
+  "hash": "4a6dd07a90f5abc45246f7c01a01b7f1",
+  "result": {
+    "markdown": "---\ntitle: \"Quarto slides template\"\nauthor: \"type group name here\"\ndate: \"2023-08-29\"\n# format: \n#   html:\n#     toc: true\n#     theme: cerulean\nformat:\n  revealjs:\n    scrollable: true\n---\n\n::: {.cell}\n\n:::\n\n\n# This is a slide\n\n* This\n* is\n* an\n* unordered\n* list\n\n# This is another slide\n\n1. This\n2. is\n3. an\n4. ordered\n5. list\n\n# This is a third slide\n\n* We use asterisks for *italic text*\n* We use another pair of asterisks for **boldface text**\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\r\n<script>\r\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\r\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\r\n  // slide changes (different for each slide format).\r\n  (function () {\r\n    // dispatch for htmlwidgets\r\n    function fireSlideEnter() {\r\n      const event = window.document.createEvent(\"Event\");\r\n      event.initEvent(\"slideenter\", true, true);\r\n      window.document.dispatchEvent(event);\r\n    }\r\n\r\n    function fireSlideChanged(previousSlide, currentSlide) {\r\n      fireSlideEnter();\r\n\r\n      // dispatch for shiny\r\n      if (window.jQuery) {\r\n        if (previousSlide) {\r\n          window.jQuery(previousSlide).trigger(\"hidden\");\r\n        }\r\n        if (currentSlide) {\r\n          window.jQuery(currentSlide).trigger(\"shown\");\r\n        }\r\n      }\r\n    }\r\n\r\n    // hookup for slidy\r\n    if (window.w3c_slidy) {\r\n      window.w3c_slidy.add_observer(function (slide_num) {\r\n        // slide_num starts at position 1\r\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\r\n      });\r\n    }\r\n\r\n  })();\r\n</script>\r\n\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

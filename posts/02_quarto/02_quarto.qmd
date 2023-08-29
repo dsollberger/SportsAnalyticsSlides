@@ -1,0 +1,163 @@
+---
+title: "2: Quarto"
+author: "Derek Sollberger"
+date: "2023-08-29"
+format: 
+  html:
+    toc: true
+    theme: cerulean
+# format: 
+#   revealjs:
+#     scrollable: true
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library("tidyverse")
+```
+
+# Introduction to Quarto
+
+Quarto is a markdown language that we can use here in RStudio to
+
+* write R code
+* include math formulas
+* type reports and descriptions
+* and more
+
+# Learner Profiles
+
+
+
+## Chip
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Chip](Chip.png)
+:::
+
+::: {.column width="50%"}
+
+* major: chemistry
+* from: Milipitas
+* goal: gain leadership skills
+* very enthusiastic about university, but is not sure what to expect
+
+:::
+
+::::
+
+## Dale
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Dale](Dale.png)
+:::
+
+::: {.column width="50%"}
+
+* major: psychology
+* from: Rancho Cordova
+* goal: party every weekend
+* happy to be an adult and start a new stage of life in Merced
+
+:::
+
+::::
+
+## Gadget
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Gadget](Gadget.png)
+:::
+
+::: {.column width="50%"}
+
+* major: mechanical engineering
+* from: West Covina
+* goal: join a robotics club
+* has a lot of computer programming experience, but is not as confident in mathematics
+
+:::
+
+::::
+
+## Monty
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Monty](Monty.png)
+:::
+
+::: {.column width="50%"}
+
+* major: biology
+* from: Atwater
+* goal: get the cheese!
+* has no computer programming experience, but is willing to learn
+
+:::
+
+::::
+
+
+
+# Textbooks
+
+Materials from this class come from sources such as the following textbooks
+
+1. *R for Data Science* by **Hadley Wickham**
+2. *Statistical Inference via Data Science* by Chester Ismay
+3. *Analyzing Baseball Data with R* by **Max Marchi**
+4. *Basketball Data Science* by Paola Zuccolotto
+
+![textbooks](textbooks.png)
+
+# Today's Assignments
+
+## Group Page
+
+* Create a page in CatCourses in your group space
+    
+    + include your names and e-mail addresses
+    + come up with a creative name for your group
+
+## Introductions
+    
+* Create a Quarto slideshow to introduce yourselves
+
+    + a slide for each group member: name, major, goal(s)
+    + a slide of song recommendations
+    
+        - song titles in *italics*
+        - song artists in **boldface**
+
+
+
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+	
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::::
+
+::::: {.panel-tabset}
+
+
+
+:::::

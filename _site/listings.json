@@ -2,20 +2,8 @@
   {
     "listing": "/slides.html",
     "items": [
-      "/posts/02_Exploring Data/02_exploring_data.html",
-      "/posts/03_Boxplots/03_boxplots.html",
-      "/posts/04_Barplots/04_barplots.html",
-      "/posts/05_Scatterplots/05_scatterplots.html",
-      "/posts/06_Regression/06_regression.html",
-      "/posts/07_WAR/07_WAR.html",
-      "/posts/10_Scandal/10_Scandal.html",
-      "/posts/01_syllabus/01_introductions.html",
-      "/posts/13_Clustering/13_Clustering.html",
-      "/posts/12_Hypothesis_Testing/12_Hypothesis_Testing.html",
-      "/posts/11_Confidence_Intervals/11_Confidence_Intervals.html",
-      "/posts/09_Determination/09_determination.html",
-      "/posts/08_Odds/08_Odds.html",
-      "/posts/07_WAR/07_WAR.html"
+      "/posts/02_quarto/02_quarto.html",
+      "/posts/01_syllabus/01_introductions.html"
     ]
   }
 ]

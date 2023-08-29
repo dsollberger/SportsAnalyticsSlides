@@ -39,7 +39,7 @@
     "href": "slides.html",
     "title": "SportsAnalyticsSlides",
     "section": "",
-    "text": "02_-_Exploring Data\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n03_-_Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n4: Barplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n5: Scatterplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n10: Scandals\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n13: Clustering\n\n\n\n\n\n\n\n\n\n\n\n\nNov 29, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n12: Hypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\nNov 15, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n11: Confidence Intervals\n\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n9: Coefficient of Determination\n\n\n\n\n\n\n\n\n\n\n\n\nOct 25, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n8: Odds\n\n\n\n\n\n\n\n\n\n\n\n\nOct 18, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n7: WAR\n\n\n\n\n\n\n\n\n\n\n\n\nOct 11, 2022\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
+    "text": "2: Quarto\n\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/02_-_Exploring Data/02_exploring_data.html#look-at-the-data",
@@ -719,5 +719,54 @@
     "title": "1: Introduction",
     "section": "Inclusion Statement",
     "text": "Inclusion Statement\nI value all students regardless of their background, country of origin, race, religion, ethnicity, gender, sexual orientation, disability status, etc. and am committed to providing a climate of excellence and inclusiveness within all aspects of the course. If there are aspects of your culture or identity that you would like to share with me as they relate to your success in this class, I am happy to meet to discuss. Likewise, if you have any concerns in this area or facing any special issues or challenges, you are encouraged to discuss the matter with me (set up a meeting by e-mail) with an assurance of full confidentiality (only exception being mandatory reporting of academic integrity code violations or sexual harassment)."
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html",
+    "href": "posts/02_quarto/02_quarto.html",
+    "title": "2: Quarto",
+    "section": "",
+    "text": "Quarto is a markdown language that we can use here in RStudio to\n\nwrite R code\ninclude math formulas\ntype reports and descriptions\nand more"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#chip",
+    "href": "posts/02_quarto/02_quarto.html#chip",
+    "title": "2: Quarto",
+    "section": "Chip",
+    "text": "Chip\n\n\n\n\n\nChip\n\n\n\n\nmajor: chemistry\nfrom: Milipitas\ngoal: gain leadership skills\nvery enthusiastic about university, but is not sure what to expect"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#dale",
+    "href": "posts/02_quarto/02_quarto.html#dale",
+    "title": "2: Quarto",
+    "section": "Dale",
+    "text": "Dale\n\n\n\n\n\nDale\n\n\n\n\nmajor: psychology\nfrom: Rancho Cordova\ngoal: party every weekend\nhappy to be an adult and start a new stage of life in Merced"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#gadget",
+    "href": "posts/02_quarto/02_quarto.html#gadget",
+    "title": "2: Quarto",
+    "section": "Gadget",
+    "text": "Gadget\n\n\n\n\n\nGadget\n\n\n\n\nmajor: mechanical engineering\nfrom: West Covina\ngoal: join a robotics club\nhas a lot of computer programming experience, but is not as confident in mathematics"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#monty",
+    "href": "posts/02_quarto/02_quarto.html#monty",
+    "title": "2: Quarto",
+    "section": "Monty",
+    "text": "Monty\n\n\n\n\n\nMonty\n\n\n\n\nmajor: biology\nfrom: Atwater\ngoal: get the cheese!\nhas no computer programming experience, but is willing to learn"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#group-page",
+    "href": "posts/02_quarto/02_quarto.html#group-page",
+    "title": "2: Quarto",
+    "section": "Group Page",
+    "text": "Group Page\n\nCreate a page in CatCourses in your group space\n\ninclude your names and e-mail addresses\ncome up with a creative name for your group"
+  },
+  {
+    "objectID": "posts/02_quarto/02_quarto.html#introductions",
+    "href": "posts/02_quarto/02_quarto.html#introductions",
+    "title": "2: Quarto",
+    "section": "Introductions",
+    "text": "Introductions\n\nCreate a Quarto slideshow to introduce yourselves\n\na slide for each group member: name, major, goal(s)\na slide of song recommendations\n\nsong titles in italics\nsong artists in boldface"
   }
 ]

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Derek Sollberger">
+<meta name="dcterms.date" content="2023-08-29">
 
-<title>Slides for Sports Analytics - SportsAnalyticsSlides</title>
+<title>Slides for Sports Analytics - 2: Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,40 +60,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -103,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Slides for Sports Analytics</span>
     </a>
   </div>
@@ -114,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./slides.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../slides.html" rel="" target="">
  <span class="menu-text">SportsAnalyticsSlides</span></a>
   </li>  
 </ul>
@@ -127,99 +96,216 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">SportsAnalyticsSlides</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">2: Quarto</h1>
                       </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Derek Sollberger </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 29, 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-quarto" id="toc-introduction-to-quarto" class="nav-link active" data-scroll-target="#introduction-to-quarto">Introduction to Quarto</a></li>
+  <li><a href="#learner-profiles" id="toc-learner-profiles" class="nav-link" data-scroll-target="#learner-profiles">Learner Profiles</a>
+  <ul class="collapse">
+  <li><a href="#chip" id="toc-chip" class="nav-link" data-scroll-target="#chip">Chip</a></li>
+  <li><a href="#dale" id="toc-dale" class="nav-link" data-scroll-target="#dale">Dale</a></li>
+  <li><a href="#gadget" id="toc-gadget" class="nav-link" data-scroll-target="#gadget">Gadget</a></li>
+  <li><a href="#monty" id="toc-monty" class="nav-link" data-scroll-target="#monty">Monty</a></li>
+  </ul></li>
+  <li><a href="#textbooks" id="toc-textbooks" class="nav-link" data-scroll-target="#textbooks">Textbooks</a></li>
+  <li><a href="#todays-assignments" id="toc-todays-assignments" class="nav-link" data-scroll-target="#todays-assignments">Today’s Assignments</a>
+  <ul class="collapse">
+  <li><a href="#group-page" id="toc-group-page" class="nav-link" data-scroll-target="#group-page">Group Page</a></li>
+  <li><a href="#introductions" id="toc-introductions" class="nav-link" data-scroll-target="#introductions">Introductions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<section id="introduction-to-quarto" class="level1">
+<h1>Introduction to Quarto</h1>
+<p>Quarto is a markdown language that we can use here in RStudio to</p>
+<ul>
+<li>write R code</li>
+<li>include math formulas</li>
+<li>type reports and descriptions</li>
+<li>and more</li>
+</ul>
+</section>
+<section id="learner-profiles" class="level1">
+<h1>Learner Profiles</h1>
+<section id="chip" class="level2">
+<h2 class="anchored" data-anchor-id="chip">Chip</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Chip.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Chip</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>major: chemistry</li>
+<li>from: Milipitas</li>
+<li>goal: gain leadership skills</li>
+<li>very enthusiastic about university, but is not sure what to expect</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="dale" class="level2">
+<h2 class="anchored" data-anchor-id="dale">Dale</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Dale.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Dale</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>major: psychology</li>
+<li>from: Rancho Cordova</li>
+<li>goal: party every weekend</li>
+<li>happy to be an adult and start a new stage of life in Merced</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="gadget" class="level2">
+<h2 class="anchored" data-anchor-id="gadget">Gadget</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Gadget.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Gadget</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>major: mechanical engineering</li>
+<li>from: West Covina</li>
+<li>goal: join a robotics club</li>
+<li>has a lot of computer programming experience, but is not as confident in mathematics</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="monty" class="level2">
+<h2 class="anchored" data-anchor-id="monty">Monty</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Monty.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Monty</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>major: biology</li>
+<li>from: Atwater</li>
+<li>goal: get the cheese!</li>
+<li>has no computer programming experience, but is willing to learn</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="textbooks" class="level1">
+<h1>Textbooks</h1>
+<p>Materials from this class come from sources such as the following textbooks</p>
+<ol type="1">
+<li><em>R for Data Science</em> by <strong>Hadley Wickham</strong></li>
+<li><em>Statistical Inference via Data Science</em> by Chester Ismay</li>
+<li><em>Analyzing Baseball Data with R</em> by <strong>Max Marchi</strong></li>
+<li><em>Basketball Data Science</em> by Paola Zuccolotto</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="textbooks.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">textbooks</figcaption>
+</figure>
+</div>
+</section>
+<section id="todays-assignments" class="level1">
+<h1>Today’s Assignments</h1>
+<section id="group-page" class="level2">
+<h2 class="anchored" data-anchor-id="group-page">Group Page</h2>
+<ul>
+<li><p>Create a page in CatCourses in your group space</p>
+<ul>
+<li>include your names and e-mail addresses</li>
+<li>come up with a creative name for your group</li>
+</ul></li>
+</ul>
+</section>
+<section id="introductions" class="level2">
+<h2 class="anchored" data-anchor-id="introductions">Introductions</h2>
+<ul>
+<li><p>Create a Quarto slideshow to introduce yourselves</p>
+<ul>
+<li><p>a slide for each group member: name, major, goal(s)</p></li>
+<li><p>a slide of song recommendations</p>
+<ul>
+<li>song titles in <em>italics</em></li>
+<li>song artists in <strong>boldface</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
+</div>
+</div>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1693292400000" data-listing-file-modified-sort="1693280215764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/02_quarto/02_quarto.html"> <p class="card-img-top"><img src="posts\02_quarto\Chip.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/02_quarto/02_quarto.html">
-<h3 class="no-anchor listing-title">
-2: Quarto
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Quarto is a markdown language that we can use here in RStudio to
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/02_quarto/02_quarto.html">
-<div class="listing-date">
-Aug 29, 2023
-</div>
-<div class="listing-author">
-Derek Sollberger
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1692860400000" data-listing-file-modified-sort="1692846031472" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="./posts/01_syllabus/01_introductions.html"> <p class="card-img-top"><img src="posts\01_syllabus\dorm.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/01_syllabus/01_introductions.html">
-<h3 class="no-anchor listing-title">
-1: Introduction
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-Lecturer: Derek Sollberger
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/01_syllabus/01_introductions.html">
-<div class="listing-date">
-Aug 24, 2023
-</div>
-<div class="listing-author">
-Derek Sollberger
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

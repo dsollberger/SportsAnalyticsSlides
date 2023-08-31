@@ -2,6 +2,7 @@
   {
     "listing": "/slides.html",
     "items": [
+      "/posts/03_summaries/03_summaries.html",
       "/posts/02_quarto/02_quarto.html",
       "/posts/01_syllabus/01_introductions.html"
     ]

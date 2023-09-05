@@ -1,6 +1,6 @@
 ---
 title: "3: Summaries"
-author: "type group name here"
+author: "Derek Sollberger"
 date: "2023-08-31"
 format:
   html:

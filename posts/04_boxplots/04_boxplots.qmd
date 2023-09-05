@@ -1,0 +1,170 @@
+---
+title: "03_-_Boxplots"
+author: "Derek Sollberger"
+format: html
+---
+
+## Load the Tidyverse
+
+The `tidyverse` suite of packages are streamlined to make data science processes easier.  We can load the packages with the `library()` command.
+
+```{r}
+#| message: false
+#| warning: false
+library("tidyverse")
+```
+
+# Example
+
+## Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.
+
+```{r}
+#| message: false
+#| warning: false
+df <- readr::read_csv("baseball_teams_data.csv")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+#| echo: true
+#| eval: true
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+#| echo: true
+#| eval: true
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+#| echo: true
+#| eval: true
+colnames(df)
+```
+
+## A Starter Boxplot
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  ggplot(aes(y = W)) +
+  geom_boxplot() +
+  labs(title = "MLB Wins",
+       subtitle = "2012 to 2021 seasons",
+       caption = "Spark 10",
+       y = "wins")
+```
+
+The thick line in the middle of the boxplot is at the median value of the data.  The start and end of the box are at the 25th and 75th percentiles.  Statisticians call the difference between the 25th and 75th percentiles the *interquartile range* (IQR).  The "whiskers" extend 1.5 times the IQR.  Finally, additional points beyond the whiskers may be thought of as outliers.
+
+## Comparisons
+
+This is the code block that most students will want to use.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  ggplot(aes(x = lgID, y = R),
+         color = "yellow", fill = "blue") +
+  geom_boxplot() +
+  labs(title = "MLB Runs by League",
+       subtitle = "2012 to 2021 seasons",
+       caption = "Spark 10",
+       x = "league",
+       y = "runs scored")
+```
+
+Boxplots are particularly useful to graph a numerical variable (on the $y$-axis) across a categorical variable (on the $x$-axis).  A lot of research is shown with side-by-side boxplots.
+
+## Grouping
+
+Here are some advanced examples.  We can use the `group` parameter to tell R how to organize the data.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  ggplot(aes(x = franchID, y = W, group = franchID)) +
+  geom_boxplot() +
+  labs(title = "MLB Wins by Team",
+       subtitle = "2012 to 2021 seasons",
+       caption = "Spark 10",
+       x = "team",
+       y = "wins")
+```
+
+Especially in sports, the categorical data might have too many labels for a visually-pleasing graph (here: too many teams to teams to think about simultaneously).  We can use the `filter` commend (SQL skills) to help us look at a small amount of labels and make the graph easier to read.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  filter(franchID %in% c("ARI", "COL", "LAD", "SDP", "SFG")) |>
+  ggplot(aes(x = franchID, y = W, group = franchID)) +
+  geom_boxplot(aes(color = franchID, fill = franchID)) +
+  
+  # https://teamcolorcodes.com/mlb-color-codes/
+  scale_color_manual(values = c("#E3D4AD", "#C4CED4", "#A5ACAF", "#FFC425", "#27251F")) +
+  scale_fill_manual(values = c("#A71930", "#333366", "#005A9C", "#2F241D", "#FD5A1E")) +
+
+  labs(title = "National League West Wins by Team",
+       subtitle = "2012 to 2021 seasons",
+       caption = "Spark 10",
+       x = "team",
+       y = "wins") +
+  theme_minimal()
+```
+
+
+# Exercises
+
+Load your data set (for your sport) using the `read_csv` command and save the data frame as `df`.
+
+```{r}
+
+```
+
+Use the `head`, `str`, and `colnames` commands to look at your data set.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+Build two different boxplot visualizations.  Be sure to change the `labs` (labels) to describe your data set well.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+# Wrap Up
+
+* Click `Render` to create the HTML file
+* Check the checkbox next to the HTML file (in the Files pane)
+* Click the gear ("More"), and then click "Export"
+* Upload the HTML file back into our CatCourses space

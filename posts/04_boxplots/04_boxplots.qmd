@@ -1,7 +1,10 @@
 ---
-title: "03_-_Boxplots"
+title: "4: Boxplots"
 author: "Derek Sollberger"
-format: html
+date: "2023-09-05"
+format: 
+  html:
+    toc: TRUE
 ---
 
 ## Load the Tidyverse

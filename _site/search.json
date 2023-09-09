@@ -39,7 +39,7 @@
     "href": "slides.html",
     "title": "SportsAnalyticsSlides",
     "section": "",
-    "text": "03_-_Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n3: Summaries\n\n\n\n\n\n\n\n\n\n\n\n\nAug 31, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n2: Quarto\n\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
+    "text": "5: Barplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n4: Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n3: Summaries\n\n\n\n\n\n\n\n\n\n\n\n\nAug 31, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n2: Quarto\n\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/02_-_Exploring Data/02_exploring_data.html#look-at-the-data",
@@ -779,50 +779,134 @@
   {
     "objectID": "posts/04_boxplots/04_boxplots.html",
     "href": "posts/04_boxplots/04_boxplots.html",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "",
     "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\nlibrary(\"tidyverse\")"
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#load-the-tidyverse",
     "href": "posts/04_boxplots/04_boxplots.html#load-the-tidyverse",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "",
     "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\nlibrary(\"tidyverse\")"
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#load-the-data",
     "href": "posts/04_boxplots/04_boxplots.html#load-the-data",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "Load the Data",
     "text": "Load the Data\nSince we have CSV files (comma-separated values), the read_csv() command in the readr package will be convenient here. I tend to save data set into a variable df (stands for “data frame”).\nToday’s data set comes from the Lahman package, which contains a lot of historical data about Major League Baseball.\n\ndf &lt;- readr::read_csv(\"baseball_teams_data.csv\")"
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#look-at-the-data",
     "href": "posts/04_boxplots/04_boxplots.html#look-at-the-data",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "Look at the Data",
     "text": "Look at the Data\nOne way to get a quick look at the data set is with the head() command (outputs the first few rows and columns).\n\nhead(df)\n\n# A tibble: 6 × 48\n  yearID lgID  teamID franchID divID  Rank     G Ghome     W     L DivWin WCWin\n   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;\n1   2012 NL    ARI    ARI      W         3   162    81    81    81 N      N    \n2   2012 NL    ATL    ATL      E         2   162    81    94    68 N      Y    \n3   2012 AL    BAL    BAL      E         2   162    81    93    69 N      Y    \n4   2012 AL    BOS    BOS      E         5   162    81    69    93 N      N    \n5   2012 AL    CHA    CHW      C         2   162    81    85    77 N      N    \n6   2012 NL    CHN    CHC      C         5   162    81    61   101 N      N    \n# ℹ 36 more variables: LgWin &lt;chr&gt;, WSWin &lt;chr&gt;, R &lt;dbl&gt;, AB &lt;dbl&gt;, H &lt;dbl&gt;,\n#   X2B &lt;dbl&gt;, X3B &lt;dbl&gt;, HR &lt;dbl&gt;, BB &lt;dbl&gt;, SO &lt;dbl&gt;, SB &lt;dbl&gt;, CS &lt;dbl&gt;,\n#   HBP &lt;dbl&gt;, SF &lt;dbl&gt;, RA &lt;dbl&gt;, ER &lt;dbl&gt;, ERA &lt;dbl&gt;, CG &lt;dbl&gt;, SHO &lt;dbl&gt;,\n#   SV &lt;dbl&gt;, IPouts &lt;dbl&gt;, HA &lt;dbl&gt;, HRA &lt;dbl&gt;, BBA &lt;dbl&gt;, SOA &lt;dbl&gt;, E &lt;dbl&gt;,\n#   DP &lt;dbl&gt;, FP &lt;dbl&gt;, name &lt;chr&gt;, park &lt;chr&gt;, attendance &lt;dbl&gt;, BPF &lt;dbl&gt;,\n#   PPF &lt;dbl&gt;, teamIDBR &lt;chr&gt;, teamIDlahman45 &lt;chr&gt;, teamIDretro &lt;chr&gt;\n\n\nWe can also look at the structure of a data frame with the str() command. In particular, this view allows us to quickly see which variables are numerical and which are categorical.\n\nstr(df, give.attr = FALSE)\n\nspc_tbl_ [300 × 48] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ yearID        : num [1:300] 2012 2012 2012 2012 2012 ...\n $ lgID          : chr [1:300] \"NL\" \"NL\" \"AL\" \"AL\" ...\n $ teamID        : chr [1:300] \"ARI\" \"ATL\" \"BAL\" \"BOS\" ...\n $ franchID      : chr [1:300] \"ARI\" \"ATL\" \"BAL\" \"BOS\" ...\n $ divID         : chr [1:300] \"W\" \"E\" \"E\" \"E\" ...\n $ Rank          : num [1:300] 3 2 2 5 2 5 1 4 5 1 ...\n $ G             : num [1:300] 162 162 162 162 162 162 162 162 162 162 ...\n $ Ghome         : num [1:300] 81 81 81 81 81 81 81 81 81 81 ...\n $ W             : num [1:300] 81 94 93 69 85 61 97 68 64 88 ...\n $ L             : num [1:300] 81 68 69 93 77 101 65 94 98 74 ...\n $ DivWin        : chr [1:300] \"N\" \"N\" \"N\" \"N\" ...\n $ WCWin         : chr [1:300] \"N\" \"Y\" \"Y\" \"N\" ...\n $ LgWin         : chr [1:300] \"N\" \"N\" \"N\" \"N\" ...\n $ WSWin         : chr [1:300] \"N\" \"N\" \"N\" \"N\" ...\n $ R             : num [1:300] 734 700 712 734 748 613 669 667 758 726 ...\n $ AB            : num [1:300] 5462 5425 5560 5604 5518 ...\n $ H             : num [1:300] 1416 1341 1375 1459 1409 ...\n $ X2B           : num [1:300] 307 263 270 339 228 265 296 266 306 279 ...\n $ X3B           : num [1:300] 33 30 16 16 29 36 30 24 52 39 ...\n $ HR            : num [1:300] 165 149 214 165 211 137 172 136 166 163 ...\n $ BB            : num [1:300] 539 567 480 428 461 447 481 555 450 511 ...\n $ SO            : num [1:300] 1266 1289 1315 1197 1203 ...\n $ SB            : num [1:300] 93 101 58 97 109 94 87 110 100 59 ...\n $ CS            : num [1:300] 51 32 29 31 43 45 27 44 40 23 ...\n $ HBP           : num [1:300] 41 34 50 45 65 43 47 59 36 57 ...\n $ SF            : num [1:300] 45 46 30 55 36 24 37 39 39 39 ...\n $ RA            : num [1:300] 688 600 705 806 676 759 588 845 890 670 ...\n $ ER            : num [1:300] 626 549 642 754 646 708 540 766 824 596 ...\n $ ERA           : num [1:300] 3.93 3.42 3.9 4.7 4.02 4.51 3.34 4.78 5.22 3.75 ...\n $ CG            : num [1:300] 4 5 1 6 6 1 9 2 0 9 ...\n $ SHO           : num [1:300] 9 16 10 4 11 9 12 6 7 8 ...\n $ SV            : num [1:300] 39 47 55 35 37 28 56 43 36 40 ...\n $ IPouts        : num [1:300] 4301 4336 4449 4329 4337 ...\n $ HA            : num [1:300] 1432 1310 1433 1449 1365 ...\n $ HRA           : num [1:300] 155 145 184 190 186 175 152 174 198 151 ...\n $ BBA           : num [1:300] 417 464 481 529 503 573 427 543 566 438 ...\n $ SOA           : num [1:300] 1200 1232 1177 1176 1246 ...\n $ E             : num [1:300] 90 86 106 101 70 105 89 96 122 99 ...\n $ DP            : num [1:300] 146 147 151 159 154 148 113 157 139 127 ...\n $ FP            : num [1:300] 0.985 0.986 0.983 0.983 0.988 0.982 0.985 0.984 0.98 0.983 ...\n $ name          : chr [1:300] \"Arizona Diamondbacks\" \"Atlanta Braves\" \"Baltimore Orioles\" \"Boston Red Sox\" ...\n $ park          : chr [1:300] \"Chase Field\" \"Turner Field\" \"Oriole Park at Camden Yards\" \"Fenway Park II\" ...\n $ attendance    : num [1:300] 2177617 2420171 2102240 3043003 1965955 ...\n $ BPF           : num [1:300] 105 102 102 106 106 98 107 93 120 104 ...\n $ PPF           : num [1:300] 106 101 103 106 106 99 107 95 121 103 ...\n $ teamIDBR      : chr [1:300] \"ARI\" \"ATL\" \"BAL\" \"BOS\" ...\n $ teamIDlahman45: chr [1:300] \"ARI\" \"ATL\" \"BAL\" \"BOS\" ...\n $ teamIDretro   : chr [1:300] \"ARI\" \"ATL\" \"BAL\" \"BOS\" ...\n\n\nAnother convenient tool for our programming purposes is looking at the column names (i.e. variable names that we need to type later)\n\ncolnames(df)\n\n [1] \"yearID\"         \"lgID\"           \"teamID\"         \"franchID\"      \n [5] \"divID\"          \"Rank\"           \"G\"              \"Ghome\"         \n [9] \"W\"              \"L\"              \"DivWin\"         \"WCWin\"         \n[13] \"LgWin\"          \"WSWin\"          \"R\"              \"AB\"            \n[17] \"H\"              \"X2B\"            \"X3B\"            \"HR\"            \n[21] \"BB\"             \"SO\"             \"SB\"             \"CS\"            \n[25] \"HBP\"            \"SF\"             \"RA\"             \"ER\"            \n[29] \"ERA\"            \"CG\"             \"SHO\"            \"SV\"            \n[33] \"IPouts\"         \"HA\"             \"HRA\"            \"BBA\"           \n[37] \"SOA\"            \"E\"              \"DP\"             \"FP\"            \n[41] \"name\"           \"park\"           \"attendance\"     \"BPF\"           \n[45] \"PPF\"            \"teamIDBR\"       \"teamIDlahman45\" \"teamIDretro\""
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#a-starter-boxplot",
     "href": "posts/04_boxplots/04_boxplots.html#a-starter-boxplot",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "A Starter Boxplot",
     "text": "A Starter Boxplot\n\ndf |&gt;\n  ggplot(aes(y = W)) +\n  geom_boxplot() +\n  labs(title = \"MLB Wins\",\n       subtitle = \"2012 to 2021 seasons\",\n       caption = \"Spark 10\",\n       y = \"wins\")\n\n\n\n\nThe thick line in the middle of the boxplot is at the median value of the data. The start and end of the box are at the 25th and 75th percentiles. Statisticians call the difference between the 25th and 75th percentiles the interquartile range (IQR). The “whiskers” extend 1.5 times the IQR. Finally, additional points beyond the whiskers may be thought of as outliers."
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#comparisons",
     "href": "posts/04_boxplots/04_boxplots.html#comparisons",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "Comparisons",
     "text": "Comparisons\nThis is the code block that most students will want to use.\n\ndf |&gt;\n  ggplot(aes(x = lgID, y = R),\n         color = \"yellow\", fill = \"blue\") +\n  geom_boxplot() +\n  labs(title = \"MLB Runs by League\",\n       subtitle = \"2012 to 2021 seasons\",\n       caption = \"Spark 10\",\n       x = \"league\",\n       y = \"runs scored\")\n\n\n\n\nBoxplots are particularly useful to graph a numerical variable (on the \\(y\\)-axis) across a categorical variable (on the \\(x\\)-axis). A lot of research is shown with side-by-side boxplots."
   },
   {
     "objectID": "posts/04_boxplots/04_boxplots.html#grouping",
     "href": "posts/04_boxplots/04_boxplots.html#grouping",
-    "title": "03_-_Boxplots",
+    "title": "4: Boxplots",
     "section": "Grouping",
     "text": "Grouping\nHere are some advanced examples. We can use the group parameter to tell R how to organize the data.\n\ndf |&gt;\n  ggplot(aes(x = franchID, y = W, group = franchID)) +\n  geom_boxplot() +\n  labs(title = \"MLB Wins by Team\",\n       subtitle = \"2012 to 2021 seasons\",\n       caption = \"Spark 10\",\n       x = \"team\",\n       y = \"wins\")\n\n\n\n\nEspecially in sports, the categorical data might have too many labels for a visually-pleasing graph (here: too many teams to teams to think about simultaneously). We can use the filter commend (SQL skills) to help us look at a small amount of labels and make the graph easier to read.\n\ndf |&gt;\n  filter(franchID %in% c(\"ARI\", \"COL\", \"LAD\", \"SDP\", \"SFG\")) |&gt;\n  ggplot(aes(x = franchID, y = W, group = franchID)) +\n  geom_boxplot(aes(color = franchID, fill = franchID)) +\n  \n  # https://teamcolorcodes.com/mlb-color-codes/\n  scale_color_manual(values = c(\"#E3D4AD\", \"#C4CED4\", \"#A5ACAF\", \"#FFC425\", \"#27251F\")) +\n  scale_fill_manual(values = c(\"#A71930\", \"#333366\", \"#005A9C\", \"#2F241D\", \"#FD5A1E\")) +\n\n  labs(title = \"National League West Wins by Team\",\n       subtitle = \"2012 to 2021 seasons\",\n       caption = \"Spark 10\",\n       x = \"team\",\n       y = \"wins\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html",
+    "href": "posts/05_barplots/05_barplots.html",
+    "title": "5: Barplots",
+    "section": "",
+    "text": "Glenn Burke was an outfielder with the 1977 National-League champion Dodgers. He was born in Oakland in 1952.\n\n\n\nImage credit: Washington Post\n\n\n\n\nThe tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\n# library(\"Lahman\") #baseball data set\nlibrary(\"readxl\")\n\nWarning: package 'readxl' was built under R version 4.3.1\n\nlibrary(\"tidyverse\")\n\nWarning: package 'ggplot2' was built under R version 4.3.1\n\n\nWarning: package 'purrr' was built under R version 4.3.1\n\n\nWarning: package 'dplyr' was built under R version 4.3.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.3     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# subset of the Batting data in the Lahman database\n# df_Burke &lt;- Batting |&gt;\n  \n  # focus on Glenn Burke\n  # abbreviation found via playerInfo() helper function\n  # filter(playerID == \"burkegl01\")\n\n# df_1977 &lt;- Batting |&gt;\n  # filter(yearID == 1977) |&gt;\n  # filter(H &gt; 0) #to ease later histogram (remove players who had zero hits)\n\n# readr::write_csv(df_Burke, \"data_Burke.csv\")\n# readr::write_csv(df_1977, \"data_1977.csv\")\n\nToday’s data set comes from the Lahman package, which contains a lot of historical data about Major League Baseball."
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#load-the-tidyverse",
+    "href": "posts/05_barplots/05_barplots.html#load-the-tidyverse",
+    "title": "5: Barplots",
+    "section": "",
+    "text": "The tidyverse suite of packages are streamlined to make data science processes easier. We can load the packages with the library() command.\n\n# library(\"Lahman\") #baseball data set\nlibrary(\"readxl\")\n\nWarning: package 'readxl' was built under R version 4.3.1\n\nlibrary(\"tidyverse\")\n\nWarning: package 'ggplot2' was built under R version 4.3.1\n\n\nWarning: package 'purrr' was built under R version 4.3.1\n\n\nWarning: package 'dplyr' was built under R version 4.3.1\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.3     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# subset of the Batting data in the Lahman database\n# df_Burke &lt;- Batting |&gt;\n  \n  # focus on Glenn Burke\n  # abbreviation found via playerInfo() helper function\n  # filter(playerID == \"burkegl01\")\n\n# df_1977 &lt;- Batting |&gt;\n  # filter(yearID == 1977) |&gt;\n  # filter(H &gt; 0) #to ease later histogram (remove players who had zero hits)\n\n# readr::write_csv(df_Burke, \"data_Burke.csv\")\n# readr::write_csv(df_1977, \"data_1977.csv\")\n\nToday’s data set comes from the Lahman package, which contains a lot of historical data about Major League Baseball."
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#look-at-the-data",
+    "href": "posts/05_barplots/05_barplots.html#look-at-the-data",
+    "title": "5: Barplots",
+    "section": "Look at the Data",
+    "text": "Look at the Data\nOne way to get a quick look at the data set is with the head() command (outputs the first few rows and columns).\n\nhead(df_1977)\n\n# A tibble: 6 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 adamsbo04   1977     1 DET    AL       15    24     2     6     1     0     2\n2 adamsgl01   1977     1 MIN    AL       95   269    32    91    17     0     6\n3 aikenwi01   1977     1 CAL    AL       42    91     5    18     4     0     0\n4 alcalsa01   1977     2 MON    NL       31    25     1     2     0     0     1\n5 alexaga01   1977     1 SFN    NL       51   119    17    36     4     2     5\n6 alexama01   1977     1 OAK    AL       90    42    24    10     1     0     0\n# ℹ 10 more variables: RBI &lt;dbl&gt;, SB &lt;dbl&gt;, CS &lt;dbl&gt;, BB &lt;dbl&gt;, SO &lt;dbl&gt;,\n#   IBB &lt;dbl&gt;, HBP &lt;dbl&gt;, SH &lt;dbl&gt;, SF &lt;dbl&gt;, GIDP &lt;dbl&gt;\n\n\nWe can also look at the structure of a data frame with the str() command. In particular, this view allows us to quickly see which variables are numerical and which are categorical.\n\nstr(df_1977, give.attr = FALSE)\n\nspc_tbl_ [658 × 22] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ playerID: chr [1:658] \"adamsbo04\" \"adamsgl01\" \"aikenwi01\" \"alcalsa01\" ...\n $ yearID  : num [1:658] 1977 1977 1977 1977 1977 ...\n $ stint   : num [1:658] 1 1 1 2 1 1 1 1 1 1 ...\n $ teamID  : chr [1:658] \"DET\" \"MIN\" \"CAL\" \"MON\" ...\n $ lgID    : chr [1:658] \"AL\" \"AL\" \"AL\" \"NL\" ...\n $ G       : num [1:658] 15 95 42 31 51 90 54 155 69 22 ...\n $ AB      : num [1:658] 24 269 91 25 119 42 171 613 83 40 ...\n $ R       : num [1:658] 2 32 5 1 17 24 19 75 21 10 ...\n $ H       : num [1:658] 6 91 18 2 36 10 41 160 22 13 ...\n $ X2B     : num [1:658] 1 17 4 0 4 1 4 18 3 4 ...\n $ X3B     : num [1:658] 0 0 0 0 2 0 0 11 0 0 ...\n $ HR      : num [1:658] 2 6 0 1 5 0 5 2 1 1 ...\n $ RBI     : num [1:658] 2 49 6 2 20 2 31 43 11 4 ...\n $ SB      : num [1:658] 0 0 1 0 3 26 1 20 4 3 ...\n $ CS      : num [1:658] 0 2 2 0 1 14 3 9 3 3 ...\n $ BB      : num [1:658] 0 18 10 0 20 4 24 37 8 3 ...\n $ SO      : num [1:658] 5 30 23 13 33 6 36 114 13 4 ...\n $ IBB     : num [1:658] 0 3 2 0 2 0 0 1 0 0 ...\n $ HBP     : num [1:658] 0 0 0 0 2 0 1 0 1 0 ...\n $ SH      : num [1:658] 0 0 0 2 0 1 0 20 4 1 ...\n $ SF      : num [1:658] 0 3 0 0 2 0 4 0 1 1 ...\n $ GIDP    : num [1:658] 0 5 1 0 5 0 4 14 0 2 ...\n\n\nAnother convenient tool for our programming purposes is looking at the column names (i.e. variable names that we need to type later)\n\ncolnames(df_1977)\n\n [1] \"playerID\" \"yearID\"   \"stint\"    \"teamID\"   \"lgID\"     \"G\"       \n [7] \"AB\"       \"R\"        \"H\"        \"X2B\"      \"X3B\"      \"HR\"      \n[13] \"RBI\"      \"SB\"       \"CS\"       \"BB\"       \"SO\"       \"IBB\"     \n[19] \"HBP\"      \"SH\"       \"SF\"       \"GIDP\""
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#a-starter-histogram",
+    "href": "posts/05_barplots/05_barplots.html#a-starter-histogram",
+    "title": "5: Barplots",
+    "section": "A Starter Histogram",
+    "text": "A Starter Histogram\nA histogram is used to visualize the distribution of a numerical variable.\n\ndf_1977 |&gt;\n  ggplot(aes(x = H)) +\n  geom_histogram() +\n  labs(title = \"Hits\",\n       subtitle = \"1977 season\",\n       caption = \"Spark 01\",\n       x = \"hits\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#colors",
+    "href": "posts/05_barplots/05_barplots.html#colors",
+    "title": "5: Barplots",
+    "section": "Colors",
+    "text": "Colors\nThis is a distribution the the number of clean hits by MLB batters in the 1977 season.\n\ndf_1977 |&gt;\n  ggplot(aes(x = H)) +\n  geom_histogram(fill = \"blue\", color = \"black\") +\n  labs(title = \"Hits\",\n       subtitle = \"1977 season\",\n       caption = \"Spark 01\",\n       x = \"hits\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`."
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#labels",
+    "href": "posts/05_barplots/05_barplots.html#labels",
+    "title": "5: Barplots",
+    "section": "Label(s)",
+    "text": "Label(s)\nGlenn Burke himself had 43 hits (playing a bench role).\n\ndf_1977 |&gt;\n  ggplot(aes(x = H)) +\n  geom_histogram(fill = \"blue\", color = \"black\") +\n  geom_segment(aes(x = 93, y = 50, xend = 43, yend = 0),\n               arrow = arrow(), color = \"red\", size = 3) +\n  geom_label(aes(x = 43, y = 0, label = \"Glenn Burke\"),\n             nudge_x = 50, nudge_y = 50) +\n  labs(title = \"Hits\",\n       subtitle = \"1977 season\",\n       caption = \"Spark 01\",\n       x = \"hits\")\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\nRemember that we can get also get a sense of a player comparing them to the summary statistics.\n\ndf_1977 |&gt;\n  summarize(xbar = mean(H, na.rm = TRUE),\n            median = median(H, na.rm = TRUE),\n            sd = sd(H, na.rm = TRUE))\n\n# A tibble: 1 × 3\n   xbar median    sd\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n1  57.8     29  59.6"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#cultural-icon",
+    "href": "posts/05_barplots/05_barplots.html#cultural-icon",
+    "title": "5: Barplots",
+    "section": "Cultural Icon",
+    "text": "Cultural Icon\n\n\n\nImage Credit: Business Insider"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#look-at-the-data-1",
+    "href": "posts/05_barplots/05_barplots.html#look-at-the-data-1",
+    "title": "5: Barplots",
+    "section": "Look at the Data",
+    "text": "Look at the Data\nOne way to get a quick look at the data set is with the head() command (outputs the first few rows and columns).\n\nhead(df_Burke)\n\n# A tibble: 5 × 22\n  playerID  yearID stint teamID lgID      G    AB     R     H   X2B   X3B    HR\n  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 burkegl01   1976     1 LAN    NL       25    46     9    11     2     0     0\n2 burkegl01   1977     1 LAN    NL       83   169    16    43     8     0     1\n3 burkegl01   1978     1 LAN    NL       16    19     2     4     0     0     0\n4 burkegl01   1978     2 OAK    AL       78   200    19    47     6     1     1\n5 burkegl01   1979     1 OAK    AL       23    89     4    19     2     1     0\n# ℹ 10 more variables: RBI &lt;dbl&gt;, SB &lt;dbl&gt;, CS &lt;dbl&gt;, BB &lt;dbl&gt;, SO &lt;dbl&gt;,\n#   IBB &lt;dbl&gt;, HBP &lt;dbl&gt;, SH &lt;dbl&gt;, SF &lt;dbl&gt;, GIDP &lt;dbl&gt;\n\n\nWe can also look at the structure of a data frame with the str() command. In particular, this view allows us to quickly see which variables are numerical and which are categorical.\n\nstr(df_Burke, give.attr = FALSE)\n\ntibble [5 × 22] (S3: tbl_df/tbl/data.frame)\n $ playerID: chr [1:5] \"burkegl01\" \"burkegl01\" \"burkegl01\" \"burkegl01\" ...\n $ yearID  : num [1:5] 1976 1977 1978 1978 1979\n $ stint   : num [1:5] 1 1 1 2 1\n $ teamID  : chr [1:5] \"LAN\" \"LAN\" \"LAN\" \"OAK\" ...\n $ lgID    : chr [1:5] \"NL\" \"NL\" \"NL\" \"AL\" ...\n $ G       : num [1:5] 25 83 16 78 23\n $ AB      : num [1:5] 46 169 19 200 89\n $ R       : num [1:5] 9 16 2 19 4\n $ H       : num [1:5] 11 43 4 47 19\n $ X2B     : num [1:5] 2 8 0 6 2\n $ X3B     : num [1:5] 0 0 0 1 1\n $ HR      : num [1:5] 0 1 0 1 0\n $ RBI     : num [1:5] 5 13 2 14 4\n $ SB      : num [1:5] 3 13 1 15 3\n $ CS      : num [1:5] 2 5 0 8 1\n $ BB      : num [1:5] 3 5 0 10 4\n $ SO      : num [1:5] 8 22 4 26 10\n $ IBB     : num [1:5] 0 1 0 1 1\n $ HBP     : num [1:5] 1 1 0 0 0\n $ SH      : num [1:5] 1 0 0 6 1\n $ SF      : num [1:5] 0 0 0 1 0\n $ GIDP    : num [1:5] 1 3 0 7 3\n\n\nAnother convenient tool for our programming purposes is looking at the column names (i.e. variable names that we need to type later)\n\ncolnames(df_Burke)\n\n [1] \"playerID\" \"yearID\"   \"stint\"    \"teamID\"   \"lgID\"     \"G\"       \n [7] \"AB\"       \"R\"        \"H\"        \"X2B\"      \"X3B\"      \"HR\"      \n[13] \"RBI\"      \"SB\"       \"CS\"       \"BB\"       \"SO\"       \"IBB\"     \n[19] \"HBP\"      \"SH\"       \"SF\"       \"GIDP\""
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#bar-plot-by-identity",
+    "href": "posts/05_barplots/05_barplots.html#bar-plot-by-identity",
+    "title": "5: Barplots",
+    "section": "Bar Plot (by identity)",
+    "text": "Bar Plot (by identity)\nBar plots are easy for readers to understand, but a little tricky to produce. We usually make bar plots with a categorical variable on the \\(x\\)-axis and a numerical variable on the \\(y\\)-axis.\nWhen we want to use the numbers from the data frame directly, be sure to specify the stat = \"identity\" parameter.\n\ndf_Burke |&gt;\n  ggplot(aes(x = yearID, y = G, fill = teamID)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Glenn Burke: A Brief Time in the Major Leagues\",\n       subtitle = \"He spent seasons with the Dodgers and the Athletics\",\n       caption = \"Spark 01\",\n       x = \"season\", y = \"games played\")"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#bar-plot-by-count",
+    "href": "posts/05_barplots/05_barplots.html#bar-plot-by-count",
+    "title": "5: Barplots",
+    "section": "Bar Plot (by count)",
+    "text": "Bar Plot (by count)\nWhen we want the bar plot to reflect the number of observations (i.e. number of rows) for each category, then use the stat = \"count\" parameter.\n\ndf_Burke |&gt;\n  ggplot(aes(x = teamID, fill = teamID)) +\n  geom_bar(stat = \"count\") +\n  labs(title = \"Glenn Burke: A Brief Time in the Major Leagues\",\n       subtitle = \"He spent seasons with the Dodgers and the Athletics\",\n       caption = \"Spark 01\",\n       x = \"team\", y = \"seasons played\")"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#epilogue",
+    "href": "posts/05_barplots/05_barplots.html#epilogue",
+    "title": "5: Barplots",
+    "section": "Epilogue",
+    "text": "Epilogue\n\n\n\n\n\nImage Credit: Washington Post\n\n\n\nGlenn Burke left MLB in 1980\n\nplayed in the Gay Olympics\ndealt with drug addiction\ndied of AIDS in 1995"
+  },
+  {
+    "objectID": "posts/05_barplots/05_barplots.html#references",
+    "href": "posts/05_barplots/05_barplots.html#references",
+    "title": "5: Barplots",
+    "section": "References",
+    "text": "References\n\nLahman Data Package\nBaseball Reference\n“The trials of baseball’s first openly gay player, Glenn Burke, four decades ago” — Washington Post\n“Today is National High Five Day — this photo from 1977 shows the first ever high five” — Business Insider\nSingled Out by Andrew Maraniss"
   }
 ]

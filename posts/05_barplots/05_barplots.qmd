@@ -1,0 +1,231 @@
+---
+title: "5: Barplots"
+author: "Derek Sollberger"
+date: "2023-09-07"
+format: 
+  html:
+    toc: true
+---
+
+# The Story of Glenn Burke
+
+Glenn Burke was an outfielder with the 1977 National-League champion Dodgers.  He was born in Oakland in 1952.
+
+![Image credit: Washington Post](GlennBurkeBatting.png)
+
+
+## Load the Tidyverse
+
+The `tidyverse` suite of packages are streamlined to make data science processes easier.  We can load the packages with the `library()` command.
+
+```{r}
+# library("Lahman") #baseball data set
+library("readxl")
+library("tidyverse")
+
+# subset of the Batting data in the Lahman database
+# df_Burke <- Batting |>
+  
+  # focus on Glenn Burke
+  # abbreviation found via playerInfo() helper function
+  # filter(playerID == "burkegl01")
+
+# df_1977 <- Batting |>
+  # filter(yearID == 1977) |>
+  # filter(H > 0) #to ease later histogram (remove players who had zero hits)
+
+# readr::write_csv(df_Burke, "data_Burke.csv")
+# readr::write_csv(df_1977, "data_1977.csv")
+```
+
+Today's data set comes from the [`Lahman` package](https://github.com/cdalzell/Lahman), which contains a lot of historical data about Major League Baseball.
+
+# CSV Files
+
+When we have a CSV file (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+```{r}
+df_1977 <- readr::read_csv("data_1977.csv")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+head(df_1977)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+str(df_1977, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+colnames(df_1977)
+```
+
+## A Starter Histogram
+
+A `histogram` is used to visualize the *distribution* of a numerical variable.
+
+```{r}
+df_1977 |>
+  ggplot(aes(x = H)) +
+  geom_histogram() +
+  labs(title = "Hits",
+       subtitle = "1977 season",
+       caption = "Spark 01",
+       x = "hits")
+```
+
+## Colors
+
+This is a distribution the the number of clean hits by MLB batters in the 1977 season.
+
+```{r}
+df_1977 |>
+  ggplot(aes(x = H)) +
+  geom_histogram(fill = "blue", color = "black") +
+  labs(title = "Hits",
+       subtitle = "1977 season",
+       caption = "Spark 01",
+       x = "hits")
+```
+
+## Label(s)
+
+Glenn Burke himself had 43 hits (playing a bench role).
+
+```{r}
+df_1977 |>
+  ggplot(aes(x = H)) +
+  geom_histogram(fill = "blue", color = "black") +
+  geom_segment(aes(x = 93, y = 50, xend = 43, yend = 0),
+               arrow = arrow(), color = "red", size = 3) +
+  geom_label(aes(x = 43, y = 0, label = "Glenn Burke"),
+             nudge_x = 50, nudge_y = 50) +
+  labs(title = "Hits",
+       subtitle = "1977 season",
+       caption = "Spark 01",
+       x = "hits")
+```
+
+Remember that we can get also get a sense of a player comparing them to the summary statistics.
+
+```{r}
+df_1977 |>
+  summarize(xbar = mean(H, na.rm = TRUE),
+            median = median(H, na.rm = TRUE),
+            sd = sd(H, na.rm = TRUE))
+```
+
+## Cultural Icon
+
+![Image Credit: Business Insider](GlennBurkeHighFive.png)
+
+# Excel Files
+
+When we have an Excel file (i.e. Microsoft Excel), the `read_xlsx()` command in the  `readxl` package will be convenient here.
+
+```{r}
+df_Burke <- readxl::read_xlsx("data_Burke.xlsx")
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+head(df_Burke)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+str(df_Burke, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+colnames(df_Burke)
+```
+
+## Bar Plot (by identity)
+
+Bar plots are easy for readers to understand, but a little tricky to produce.  We usually make bar plots with a categorical variable on the $x$-axis and a numerical variable on the $y$-axis.
+
+When we want to use the numbers from the data frame directly, be sure to specify the `stat = "identity"` parameter.
+
+```{r}
+df_Burke |>
+  ggplot(aes(x = yearID, y = G, fill = teamID)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Glenn Burke: A Brief Time in the Major Leagues",
+       subtitle = "He spent seasons with the Dodgers and the Athletics",
+       caption = "Spark 01",
+       x = "season", y = "games played")
+```
+
+## Bar Plot (by count)
+
+When we want the bar plot to reflect the number of observations (i.e. number of rows) for each category, then use the `stat = "count"` parameter.
+
+```{r}
+df_Burke |>
+  ggplot(aes(x = teamID, fill = teamID)) +
+  geom_bar(stat = "count") +
+  labs(title = "Glenn Burke: A Brief Time in the Major Leagues",
+       subtitle = "He spent seasons with the Dodgers and the Athletics",
+       caption = "Spark 01",
+       x = "team", y = "seasons played")
+```
+
+# Outing
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Glenn Burke was the first openly gay player in MLB
+
+- manager asked Burke to marry a woman
+- traded to the Athletics in 1978
+:::
+
+::: {.column width="40%"}
+![](SingledOut.png)
+:::
+
+
+
+::::
+
+## Epilogue
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![Image Credit: Washington Post](GlennBurkeColor.png)
+:::
+
+::: {.column width="60%"}
+Glenn Burke left MLB in 1980
+
+- played in the Gay Olympics
+- dealt with drug addiction
+- died of AIDS in 1995
+:::
+
+::::
+
+## References
+
+- [Lahman Data Package](https://github.com/cdalzell/Lahman)
+- [Baseball Reference](https://www.baseball-reference.com/players/b/burkegl01.shtml#all_transactions_other)
+- ["The trials of baseball’s first openly gay player, Glenn Burke, four decades ago"](https://www.washingtonpost.com/news/morning-mix/wp/2015/08/17/the-trials-of-baseballs-first-openly-gay-player-glenn-burke-four-decades-ago/) --- Washington Post
+- ["Today is National High Five Day — this photo from 1977 shows the first ever high five"](https://www.businessinsider.com/where-does-the-high-five-come-from-origin-2017-4) --- Business Insider
+- [Singled Out](https://www.outsports.com/2021/3/1/22306985/mlb-gay-glenn-burke-singled-out-andrew-maraniss-biography-book) by Andrew Maraniss

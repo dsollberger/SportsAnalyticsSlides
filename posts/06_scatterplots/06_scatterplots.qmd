@@ -1,0 +1,330 @@
+---
+title: "6: Scatterplots"
+author: "Derek Sollberger"
+date: "2023-09-12"
+format: 
+  html:
+    toc: true
+---
+
+## Load the Tidyverse
+
+The `tidyverse` suite of packages are streamlined to make data science processes easier.  We can load the packages with the `library()` command.
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+# library("Lahman")
+library("tidyverse")
+```
+
+```{r}
+correlatedValues = function(x, r = 0.9){
+  r2 = r**2
+  ve = 1-r2
+  SD = sqrt(ve)
+  e  = rnorm(length(x), mean=0, sd=SD)
+  y  = r*x + e
+  return(y)
+}
+```
+
+
+# Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.
+
+```{r}
+#| echo: true
+#| eval: true
+
+# If anyone is curious, here is how I went from the
+# Lahman package to create my spreadsheet of data
+# df <- Teams |>
+#   filter(yearID >= 1990) |>
+#   filter(yearID < 2000)
+# 
+# readr::write_csv(df, "baseball_data_90s.csv")
+
+df <- readr::read_csv("baseball_data_90s.csv") |>
+  janitor::clean_names()
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+#| echo: true
+#| eval: true
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+#| echo: true
+#| eval: true
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+#| echo: true
+#| eval: true
+colnames(df)
+```
+
+
+# A Starter Scatterplot
+
+A *scatterplot* plots points on a graph where both the horizontal and vertical axes are numerical variables.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  ggplot(aes(x = r, y = w)) +
+  geom_point() + #makes the scatterplot
+  labs(title = "MLB Data",
+       subtitle = "scatterplot",
+       caption = "seasons 1990 to 1999",
+       x = "runs scored",
+       y = "wins")
+```
+
+# Correlation
+
+One way to measure a possible relationship between a pair of variables is with the correlation value
+
+$$-1 \leq r \leq 1$$
+
+In this course, we will simply follow the Pearson suggestions for interpreting correlation values:
+
+* $-1.0 \leq r \leq -0.7$: highly and negatively correlated
+* $-0.7 < r < -0.4$: slightly and negatively correlated
+* $-0.4 \leq r \leq 0.4$: virtually uncorrelated
+* $0.4 < r < 0.7$: slightly and positively correlated
+* $0.7 \leq r \leq 1.0$: highly and positively correlated
+
+## Examples
+
+::: {.panel-tabset}
+
+# 1
+
+```{r}
+x <- rnorm(100, mean = 0, sd = 1)
+y <- correlatedValues(x, r = -0.9)
+
+cor_value <- cor(x,y, use = "pairwise.complete.obs")
+
+df_for_graph <- data.frame(x,y)
+df_for_graph |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Correlation Example",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", strongly and negatively correlated"),
+       caption = "Spark 10")
+```
+
+# 2
+
+```{r}
+x <- rnorm(100, mean = 0, sd = 1)
+y <- correlatedValues(x, r = -0.5)
+
+cor_value <- cor(x,y, use = "pairwise.complete.obs")
+
+df_for_graph <- data.frame(x,y)
+df_for_graph |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Correlation Example",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", slightly and negatively correlated"),
+       caption = "Spark 10")
+```
+
+# 3
+
+```{r}
+x <- rnorm(100, mean = 0, sd = 1)
+y <- correlatedValues(x, r = 0)
+
+cor_value <- cor(x,y, use = "pairwise.complete.obs")
+
+df_for_graph <- data.frame(x,y)
+df_for_graph |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Correlation Example",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", virtually uncorrelated"),
+       caption = "Spark 10")
+```
+
+# 4
+
+```{r}
+x <- rnorm(100, mean = 0, sd = 1)
+y <- correlatedValues(x, r = 0.5)
+
+cor_value <- cor(x,y, use = "pairwise.complete.obs")
+
+df_for_graph <- data.frame(x,y)
+df_for_graph |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Correlation Example",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", slightly and positively correlated"),
+       caption = "Spark 10")
+```
+
+# 5
+
+```{r}
+x <- rnorm(100, mean = 0, sd = 1)
+y <- correlatedValues(x, r = 0.9)
+
+cor_value <- cor(x,y, use = "pairwise.complete.obs")
+
+df_for_graph <- data.frame(x,y)
+df_for_graph |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(title = "Correlation Example",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", strongly and positively correlated"),
+       caption = "Spark 10")
+```
+
+:::
+
+## Adding Correlation to Visualization
+
+This is the code block that most students will want to use.
+
+```{r}
+#| echo: true
+#| eval: true
+
+cor_value <- df |>
+  summarize(r = cor(x = r, 
+                    y = w, 
+                    use = "pairwise.complete.obs")) |>
+  unlist()
+
+df |>
+  ggplot(aes(x = r, y = w)) +
+  geom_point(color = "blue") + #makes the scatterplot
+  labs(title = "MLB Data",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", slightly and positively correlated"),
+       caption = "seasons 1990 to 1999",
+       x = "runs scored",
+       y = "wins")
+```
+
+# Grouping by Category
+
+After making a scatterplot, you can build interest in the data by grouping by a categorical variable.
+
+```{r}
+#| echo: true
+#| eval: true
+
+cor_value <- df |>
+  summarize(r = cor(x = ra, 
+                    y = w, 
+                    use = "pairwise.complete.obs")) |>
+  unlist()
+
+df |>
+  ggplot(aes(x = ra, y = w, color = lg_id)) +
+  geom_point(size = 2) + #makes the scatterplot
+  labs(title = "MLB Data",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", virtually uncorrelated"),
+       caption = "seasons 1990 to 1999",
+       x = "runs allowed",
+       y = "wins")
+```
+
+There are many customization options available in `ggplot`.  For instance, to remove the legend, use `legend.position = "none"` inside the `theme`.
+
+```{r}
+#| echo: true
+#| eval: true
+
+cor_value <- df |>
+  summarize(r = cor(x = ra, 
+                    y = w, 
+                    use = "pairwise.complete.obs")) |>
+  unlist()
+
+df |>
+  ggplot(aes(x = ra, y = w, color = lg_id)) +
+  geom_point(size = 2) + #makes the scatterplot
+  labs(title = "MLB Data",
+       subtitle = paste0("r = ", round(cor_value, 4), 
+                         ", virtually uncorrelated"),
+       caption = "seasons 1990 to 1999",
+       x = "runs allowed",
+       y = "wins") +
+  scale_color_manual(values = c("blue", "red")) +
+  theme(legend.position = "none")
+```
+
+
+# Exercises
+
+Load your data set (for your sport) using the `read_csv` command and save the data frame as `df`.
+
+```{r}
+
+```
+
+Use the `head`, `str`, and `colnames` commands to look at your data set.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+Build two different scatterplot visualizations.
+
+* change the `labs` (labels) to describe your data set well
+* include the correlation values in the `subtitle`
+
+    - describe the correlation (e.g. "strongly and positively correlated")
+
+* try to affect the colors
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+# Wrap Up
+
+* Click `Render` to create the HTML file
+* Check the checkbox next to the HTML file (in the Files pane)
+* Click the gear ("More"), and then click "Export"
+* Upload the HTML file back into our CatCourses space

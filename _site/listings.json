@@ -2,6 +2,7 @@
   {
     "listing": "/slides.html",
     "items": [
+      "/posts/08_ranking/08_ranking.html",
       "/posts/07_regression/07_regression.html",
       "/posts/06_scatterplots/06_scatterplots.html",
       "/posts/05_barplots/05_barplots.html",

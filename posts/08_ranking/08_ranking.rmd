@@ -1,0 +1,171 @@
+---
+title: "8: Rankings"
+author: "Derek Sollberger"
+date: "2023-09-19"
+format: 
+  html:
+    toc: true
+    theme: cerulean
+---
+
+# Start
+
+## Load the Tidyverse
+
+The `tidyverse` suite of packages are streamlined to make data science processes easier.  We can load the packages with the `library()` command.
+
+The `gt` package allows researchers to quickly create tables that are easy to reorganize and are highly customizable.
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library("gt") #grammar of tables
+library("tidyverse")
+```
+
+## Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.  For interest, this is a subset of the data from the 2004 to 2022 seasons.
+
+```{r}
+#| echo: true
+#| eval: true
+df <- readr::read_csv("baseball_2004_2022.csv") |>
+  janitor::clean_names()
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+#| echo: true
+#| eval: true
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+#| echo: true
+#| eval: true
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+#| echo: true
+#| eval: true
+colnames(df)
+```
+
+
+# Examples
+
+In each code block with multiple lines of code, we have "piped" together these lines of code with `|>` to connect the steps of the processes.  We can create a professional looking table by ending the chain with `gt()` ("grammar of tables").
+
+## Highest Values
+
+In the following example, here are the baseball teams (in the past 18 seasons) that have hit the most home runs in a season.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  select(year_id, franch_id, hr) |> #select columns to keep
+  slice_max(hr, n = 10) |> #finds 10 highest values by numerical variable
+  gt() |> #makes nice tables
+  tab_header(title = "Top 10 Teams by Home Runs")
+```
+
+From the `dplyr` part of the `tidyverse`, observe how the `slice_max` function will
+
+* ask for a numerical variable
+* arrange the data in descending order
+* return the first $n$ rows
+
+## Smallest Values
+
+Similarly, the `slice_min` function will
+
+* ask for a numerical variable
+* arrange the data in ascending order
+* return the first $n$ rows
+
+In the following example, here are the baseball teams (in the past 18 seasons) that had the least earned run average in a season.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  select(year_id, franch_id, era) |> #select columns to keep
+  slice_min(era, n = 10) |> #finds 10 loweest values by numerical variable
+  gt() |> #makes nice tables
+  tab_header(title = "Top 10 Teams by ERA")
+```
+
+## Optional: Customization
+
+`R` programmers like the `gt` package because we can customize the tables in many ways.  The documentation can be found here: [https://gt.rstudio.com/index.html](https://gt.rstudio.com/index.html)
+
+Here is a slightly more extensive example.
+
+```{r}
+#| echo: true
+#| eval: true
+df |>
+  select(year_id, franch_id, hr) |> #select columns to keep
+  slice_max(hr, n = 10) |> #finds 10 highest values by numerical variable
+  gt() |> #makes nice tables
+  tab_header(title = md("Top 10 Teams by **Home Runs**")) |>
+  tab_footnote(footnote = "2004 to 2022 seasons") |>
+  tab_options(column_labels.background.color = "blue") |>
+  cols_align(
+    align = "center",
+    columns = everything()
+    ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = "yellow"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_body(
+      columns = hr
+    )
+  )
+```
+
+
+# Exercises
+
+Create a `gt` table that ranks one of the numerical variables from your sports data.  Your table has to include
+
+* at least one numerical variable
+* at least one categorical variable
+* a title
+
+```{r}
+
+```
+
+Create another `gt` table that ranks one of the numerical variables from your sports data.  Your table has to include
+
+* at least one numerical variable
+* at least one categorical variable
+* a title
+
+```{r}
+
+```
+
+
+# Wrap Up
+
+* Click `Render` to create the HTML file
+* Check the checkbox next to the HTML file (in the Files pane)
+* Click the gear ("More"), and then click "Export"
+* Upload the HTML file back into our CatCourses space

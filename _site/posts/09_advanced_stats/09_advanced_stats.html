@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Derek Sollberger">
+<meta name="dcterms.date" content="2023-09-26">
+
+<title>Slides for Sports Analytics - 9: Advanced Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Slides for Sports Analytics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../slides.html" rel="" target="">
+ <span class="menu-text">SportsAnalyticsSlides</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">9: Advanced Statistics</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Derek Sollberger </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 26, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#describe-some-common-statistics-in-baseball" id="toc-describe-some-common-statistics-in-baseball" class="nav-link active" data-scroll-target="#describe-some-common-statistics-in-baseball">Describe some common statistics in baseball</a></li>
+  <li><a href="#describe-some-advanced-statistics-in-baseball" id="toc-describe-some-advanced-statistics-in-baseball" class="nav-link" data-scroll-target="#describe-some-advanced-statistics-in-baseball">Describe some advanced statistics in baseball</a></li>
+  <li><a href="#how-have-advanced-statistics-affected-the-study-of-baseball" id="toc-how-have-advanced-statistics-affected-the-study-of-baseball" class="nav-link" data-scroll-target="#how-have-advanced-statistics-affected-the-study-of-baseball">How have advanced statistics affected the study of baseball?</a></li>
+  <li><a href="#elaborate-on-the-definition-of-war-for-evaluating-baseball-players" id="toc-elaborate-on-the-definition-of-war-for-evaluating-baseball-players" class="nav-link" data-scroll-target="#elaborate-on-the-definition-of-war-for-evaluating-baseball-players">Elaborate on the definition of WAR for evaluating baseball players</a></li>
+  <li><a href="#how-do-we-judge-the-validity-of-advanced-metrics-in-baseball-statistics" id="toc-how-do-we-judge-the-validity-of-advanced-metrics-in-baseball-statistics" class="nav-link" data-scroll-target="#how-do-we-judge-the-validity-of-advanced-metrics-in-baseball-statistics">How do we judge the validity of advanced metrics in baseball statistics?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Today, I wanted to use AI tools (artificial intelligence) to guide discussions about advanced statistics in our Sports Analytics course.</p>
+<p>In this blog post, I entered some prompts into <code>ChatGPT</code> (version 3.5) do draft some responses.</p>
+<section id="describe-some-common-statistics-in-baseball" class="level1">
+<h1>Describe some common statistics in baseball</h1>
+<blockquote class="blockquote">
+<p>Baseball is a sport rich in statistical analysis, and many different metrics are used to evaluate the performance of players and teams. Here are some common statistics in baseball:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Batting Average (BA): Batting average is one of the most basic and widely recognized statistics in baseball. It measures a batter’s success in getting hits and is calculated as the number of hits divided by the number of at-bats. It is typically represented as a three-digit decimal, e.g., .300.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>On-Base Percentage (OBP): OBP measures a player’s ability to get on base and is calculated as the sum of hits, walks, and hit by pitches divided by the sum of at-bats, walks, hit by pitches, and sacrifice flies. OBP provides a more comprehensive view of a player’s ability to reach base than batting average.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Slugging Percentage (SLG): Slugging percentage quantifies a player’s power at the plate. It measures the total bases a player earns from hits and is calculated as the total bases divided by the number of at-bats. Slugging percentage is usually represented as a three-digit decimal, e.g., .500.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>OPS (On-Base Plus Slugging): OPS is the sum of a player’s OBP and SLG and is often used as a quick way to assess a player’s overall offensive performance. A higher OPS generally indicates a more effective hitter.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Runs Batted In (RBI): RBI is a statistic that measures a batter’s ability to drive in runs. It counts how many runs a player is responsible for bringing in through hits, sacrifice flies, and some other means.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Runs Scored (R): This stat counts how many times a player crosses home plate, reflecting their ability to contribute to their team’s offense.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Earned Run Average (ERA): ERA is a key statistic for pitchers. It measures the average number of earned runs a pitcher gives up per nine innings. A lower ERA indicates a more effective pitcher.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>Strikeouts (K): This stat counts the number of batters a pitcher strikes out. High strikeout totals are generally seen as a sign of a dominant pitcher.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="9" type="1">
+<li>Walks (BB): The number of batters a pitcher allows to reach base via a base on balls or walk. Control is important for pitchers, so a low BB count is usually favorable.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="10" type="1">
+<li>Fielding Percentage (FPCT): Fielding percentage is a measure of a player’s defensive abilities. It calculates the number of putouts and assists divided by the total chances (putouts + assists + errors). A higher fielding percentage indicates better defensive performance.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="11" type="1">
+<li>Wins (W) and Losses (L): These statistics are traditionally used to assess a pitcher’s performance. A win is credited to the pitcher of record for the winning team, and a loss to the pitcher of record for the losing team. However, these stats have become less significant as more advanced metrics have been developed.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="12" type="1">
+<li>Saves (SV): Saves are awarded to relief pitchers who successfully preserve a lead for their team. A pitcher is credited with a save when they enter a game in a save situation and maintain the lead.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>These statistics are just the tip of the iceberg when it comes to baseball analytics. In recent years, advanced statistics like WAR (Wins Above Replacement), FIP (Fielding Independent Pitching), and wOBA (Weighted On-Base Average) have gained popularity in providing a more comprehensive understanding of player and team performance.</p>
+</blockquote>
+</section>
+<section id="describe-some-advanced-statistics-in-baseball" class="level1">
+<h1>Describe some advanced statistics in baseball</h1>
+<blockquote class="blockquote">
+<p>Advanced statistics in baseball go beyond the traditional metrics to provide a more in-depth and nuanced analysis of player and team performance. These stats are often used by analysts, coaches, and front offices to gain a deeper understanding of a player’s contributions. Here are some advanced statistics in baseball:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Wins Above Replacement (WAR): WAR is a comprehensive statistic that attempts to quantify a player’s total value by measuring how many more wins a player is worth compared to a replacement-level player (a readily available minor league or bench player). It combines a player’s contributions both at the plate and in the field, as well as their baserunning and position.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Fielding Independent Pitching (FIP): FIP is a statistic that evaluates a pitcher’s performance based solely on factors they can control: strikeouts, walks, hit by pitches, and home runs. It removes the impact of fielding and luck, providing a more accurate assessment of a pitcher’s ability.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>xFIP (Expected Fielding Independent Pitching): xFIP is an adjusted version of FIP that normalizes a pitcher’s home run rate to a league-average HR/FB (home run to fly ball) rate. It’s a better indicator of a pitcher’s true talent, as home run rates can be volatile.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>wOBA (Weighted On-Base Average): wOBA is an all-encompassing offensive statistic that assigns specific weights to different offensive events (e.g., singles, doubles, home runs) to measure a player’s overall offensive contribution. It provides a more accurate picture of a player’s offensive value than traditional stats like batting average.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>BABIP (Batting Average on Balls in Play): BABIP measures the rate at which a player’s batted balls in play become hits. It’s used to assess whether a player’s success or failure in getting hits is due to luck or skill.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>DRA (Deserved Run Average): DRA is an advanced pitching metric that takes into account a wide range of factors, including the quality of opposing batters and situational context, to provide a more accurate measure of a pitcher’s performance.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>UZR (Ultimate Zone Rating): UZR is an advanced fielding statistic that attempts to quantify a player’s defensive value by measuring their ability to turn batted balls into outs compared to the average player at their position.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>wRC+ (Weighted Runs Created Plus): wRC+ is an advanced offensive statistic that adjusts a player’s wRC (a measure of offensive productivity) for park factors and league averages. It provides a convenient way to compare a player’s offensive output to the league average, with 100 as the league average.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="9" type="1">
+<li>Sabermetrics: Sabermetrics is a collection of advanced statistical techniques and metrics used to analyze baseball. It encompasses many of the advanced stats mentioned here, as well as other innovative metrics developed by the sabermetrics community.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="10" type="1">
+<li>Exit Velocity and Launch Angle: While not a single statistic, exit velocity (the speed of the baseball off the bat) and launch angle (the angle at which the ball leaves the bat) are critical for understanding a batter’s quality of contact. These stats can help assess a player’s power and ability to make solid contact.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="11" type="1">
+<li>Spin Rate: Spin rate measures the revolutions per minute (RPM) of a pitched baseball. It’s used to evaluate the effectiveness of various pitch types and their movement. High spin rates are often associated with pitches that are difficult for batters to hit.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>These advanced statistics have become increasingly important in modern baseball analysis, providing a more accurate and comprehensive understanding of player performance and allowing for better player evaluations and game strategies.</p>
+</blockquote>
+</section>
+<section id="how-have-advanced-statistics-affected-the-study-of-baseball" class="level1">
+<h1>How have advanced statistics affected the study of baseball?</h1>
+<blockquote class="blockquote">
+<p>Advanced statistics have had a profound impact on the study of baseball in several ways:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Improved Player Evaluation: Advanced statistics provide a more comprehensive and accurate evaluation of player performance. Traditional statistics like batting average or ERA often offer limited insights, but advanced metrics like WAR, wOBA, and FIP offer a more complete picture of a player’s contributions. This has revolutionized player scouting, drafting, and free-agent signings.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Data-Driven Decision-Making: Baseball teams now rely heavily on data-driven decision-making, from in-game strategies to lineup construction. Managers and coaches use advanced statistics to determine optimal defensive shifts, pitching changes, and offensive approaches based on data and probabilities.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Injury Prevention and Player Health: Teams use advanced metrics to monitor player workload, fatigue, and injury risk. Pitch counts, biomechanics analysis, and player tracking data are utilized to keep players healthy and maximize their performance.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Scouting and Player Development: Advanced statistics help identify and develop talent more effectively. Teams use data to assess a player’s strengths and weaknesses, make adjustments to improve their performance, and guide player development throughout their careers.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Fan Engagement: Advanced statistics have enriched the fan experience. Websites, broadcasts, and mobile apps now offer a wealth of data and metrics, allowing fans to delve deeper into the game’s analysis. This has fostered a greater understanding and appreciation of the sport.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Broadcasting and Analysis: Television and online broadcasts have integrated advanced statistics into their coverage. Analysts frequently discuss metrics like wRC+, DRS (Defensive Runs Saved), and spin rate, enhancing the broadcast’s depth and educational value.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Fantasy Baseball: Fantasy baseball, a game based on player statistics, has become more sophisticated due to advanced metrics. Participants use these statistics to draft players, make trades, and set lineups, adding complexity and enjoyment to the fantasy baseball experience.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>Rule Changes and Adaptation: The introduction of advanced statistics has led to changes in the rules and strategies of the game. Defensive shifts, “bullpenning” (relying heavily on relief pitchers), and the increased emphasis on power hitting and strikeout pitching are examples of how the game has adapted based on data.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="9" type="1">
+<li>Historical Analysis: Advanced statistics have enabled a reevaluation of historical players and records. For instance, using advanced metrics, it’s possible to compare players from different eras more accurately and assess the impact of ballparks on historical performance.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="10" type="1">
+<li>Increased Research and Innovation: The world of baseball research has expanded significantly due to advanced metrics. Analysts, researchers, and fans are constantly developing new metrics and conducting in-depth studies to gain further insights into the game.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>In summary, advanced statistics have brought a new level of sophistication to the study of baseball. They have transformed how the game is played, evaluated, and understood by players, coaches, analysts, and fans. The integration of data and analytics has become a central element in the modern baseball landscape.</p>
+</blockquote>
+</section>
+<section id="elaborate-on-the-definition-of-war-for-evaluating-baseball-players" class="level1">
+<h1>Elaborate on the definition of WAR for evaluating baseball players</h1>
+<blockquote class="blockquote">
+<p>Wins Above Replacement (WAR) is a comprehensive and widely used advanced statistic in baseball for evaluating a player’s overall contribution to their team. It quantifies a player’s value in terms of how many more wins they are worth to their team compared to a hypothetical replacement-level player. In essence, WAR answers the question: “If this player were replaced with a readily available minor league or bench player, how many more or fewer games would their team win over the course of a season?”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Here’s an elaborate definition of WAR and how it is calculated:</p>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Components of WAR:</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Offensive WAR (oWAR): This component evaluates a player’s offensive contributions, including hitting for average, power, and plate discipline. It considers statistics like batting average, on-base percentage, slugging percentage, and more. The oWAR is typically scaled to measure a player’s runs created compared to a replacement-level player.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Defensive WAR (dWAR): Defensive contributions are a significant part of a player’s overall value. dWAR assesses a player’s fielding abilities, including their range, arm strength, and ability to turn batted balls into outs. Defensive metrics like Ultimate Zone Rating (UZR) and Defensive Runs Saved (DRS) are often used in the calculation.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Base Running WAR (bWAR): Base running is another crucial aspect of a player’s value. This component evaluates a player’s ability to take extra bases, steal bases, and avoid getting caught stealing. It’s often quantified using statistics like stolen bases, caught stealing, and base-running efficiency.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Positional Adjustment: Players are adjusted based on the defensive demands of their position. For example, a shortstop’s defensive contributions are considered more valuable than those of a first baseman, so a shortstop’s positional adjustment will be higher.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>League and Park Adjustments: WAR accounts for the context in which a player performs. It adjusts for the offensive environment of the league they play in and the characteristics of their home ballpark. For instance, playing in a hitter-friendly park may lead to a downward adjustment.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Replacement Level: Replacement level refers to the expected performance of a freely available player, often a minor league call-up or a bench player. It’s a baseline for comparison, assuming that a team can replace a player who performs at or slightly below league average without much difficulty.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Calculation:</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<p>The calculation of WAR involves various steps, but the fundamental idea is to compare a player’s actual contributions to what a replacement-level player would provide in the same playing time. The formula for WAR is adjusted slightly by different sources (e.g., FanGraphs, Baseball-Reference), but it generally follows a similar structure:</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>WAR=(oWAR+dWAR+bWAR+PositionalAdjustment)/RunsperWinWAR=(oWAR+dWAR+bWAR+PositionalAdjustment)/RunsperWin</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Calculate oWAR, dWAR, and bWAR using appropriate statistics and metrics.</li>
+<li>Apply the positional adjustment, which accounts for the value of playing a particular position.</li>
+<li>Divide the sum of oWAR, dWAR, bWAR, and positional adjustment by the estimated number of runs required for one additional win. This number varies slightly from year to year due to league scoring trends but is typically around 10 runs.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Interpretation:</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<p>A player’s WAR is typically expressed as a whole number. For example, a player with a WAR of 5.0 is considered a very valuable player, as they have contributed approximately five additional wins to their team over a replacement-level player.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>WAR has become a central tool for comparing and evaluating players across different positions and eras. It provides a more complete picture of a player’s value beyond traditional statistics and allows for more objective assessments of their contributions to their team’s success.</p>
+</blockquote>
+</section>
+<section id="how-do-we-judge-the-validity-of-advanced-metrics-in-baseball-statistics" class="level1">
+<h1>How do we judge the validity of advanced metrics in baseball statistics?</h1>
+<blockquote class="blockquote">
+<p>Judging the validity of advanced metrics in baseball statistics is a crucial task to ensure that these metrics provide meaningful insights into player and team performance. Here are some key principles and considerations for evaluating the validity of advanced metrics in baseball:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Transparency and Methodology: &gt; The methodology used to calculate the metric should be transparent and well-documented. It should be clear how the metric is derived, what data sources are used, and how any adjustments or calculations are made.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Peer Review and Expert Consensus: &gt; Metrics that have been subject to peer review or have gained acceptance among baseball experts and analysts are generally more trustworthy. A broad consensus within the baseball analytics community can be a good indicator of a metric’s validity.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Data Reliability: &gt; The data used to calculate advanced metrics must be reliable and consistent. Inaccurate or incomplete data can undermine the validity of the metric. Data sources like Statcast, PitchF/X, and Play-by-Play data have become standard for advanced analytics.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Historical Context: &gt; Metrics that align with historical trends and provide meaningful context to past player performance are often more valid. Valid metrics should help explain why certain players or teams were successful or not in the past.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Predictive Value: &gt; Metrics that show a strong correlation with future performance are generally more valid. If a metric consistently predicts a player’s or team’s success or struggles, it suggests that the metric captures something meaningful.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Testing Against Outcomes: &gt; One way to assess the validity of a metric is to test it against real-world outcomes. For example, does a pitcher’s Fielding Independent Pitching (FIP) correlate well with their future performance and actual run prevention?</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>External Validation: &gt; Metrics that align with other validated metrics or contribute to a more comprehensive understanding of a player’s performance are generally more valid. They should fit within a broader framework of baseball analysis.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>Longitudinal Studies: &gt; Long-term studies of advanced metrics and their correlation with actual performance can provide insights into their validity. This can involve looking at how metrics have evolved over time and whether they remain relevant.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="9" type="1">
+<li>Sensitivity to Player Context: &gt; Metrics that take into account player context and nuances (e.g., park effects, defense, era) and are designed to be more descriptive and explanatory are often more valid.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="10" type="1">
+<li>Accounting for Limitations:</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Metrics should acknowledge their limitations. Every metric has some degree of error or uncertainty, and understanding these limitations is essential for proper interpretation.</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>External Review and Critique:</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Metrics should be open to external review and critique. If the creators of a metric are willing to engage with the baseball community and address concerns or criticisms, it can enhance the metric’s validity.</p>
+</blockquote>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Reproducibility: &gt; The calculations and methodologies behind advanced metrics should be reproducible by others. If different analysts can independently calculate the same metric with similar results, it adds to its credibility.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Performance Across Player Types: &gt; Metrics should work well for a wide range of player types. A valid metric should be applicable to both hitters and pitchers, as well as players with different playing styles and roles.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Alignment with Baseball Intuition: &gt; A valid metric should make intuitive sense to baseball experts. If a metric’s results align with what seasoned observers of the game would expect, it adds to its credibility.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>Evaluating the validity of advanced metrics in baseball statistics is an ongoing process. Metrics may evolve and improve over time as new data sources, methodologies, and insights become available. Additionally, considering multiple metrics and contextualizing them within a broader framework of analysis can help provide a more comprehensive view of player and team performance.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

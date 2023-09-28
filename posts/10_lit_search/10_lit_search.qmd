@@ -1,0 +1,43 @@
+---
+title: "10: Literature Review"
+author: "Derek Sollberger"
+date: "2023-09-28"
+format: 
+  html:
+    toc: true
+    theme: cerulean
+---
+
+Today, I wanted to use AI tools (artificial intelligence) to guide discussions about literature reviews in our Sports Analytics course.  Here is a great resource to get an overview of these tools:
+
+* [Texas A&M University research guide on AI-based literature review tools](https://tamu.libguides.com/c.php?g=1289555)
+
+# Bing
+
+Microsoft's search engine claims to be able to leverage AI to aid researchers.  Here, I performed a search for
+
+* "advanced baseball statistics papers"
+
+and I was pleased to see a few recent peer-reviewed papers listed at the top.
+
+![Bing search results](bing_search.png)
+
+
+# Semantic Scholar
+
+Semantic Scholar is a website with a clean interface that allows researchers to find papers quickly in their area of interest.  Here, I performed a search for
+
+* "advanced baseball statistics"
+
+![Semantic Scholar search results](semantic_scholar_search.png)
+
+and I was happy to find a variety of papers from realms such as baseball journalism, sports fitness, and economics.
+
+
+# Research Rabbit
+
+One of my colleagues told us about Research Rabbit at a workshop, so here I gave that app a test run---seeded with one of the papers that I found in a search above.
+
+![Research Rabbit citation graph](research_rabbit_search.png)
+
+One of the appeals is the creation of a citation graph that connects papers.  A researcher can then read through a curated selection of papers and become an expert in an arena.

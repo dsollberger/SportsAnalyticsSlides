@@ -1,0 +1,351 @@
+---
+title: "12: Hypothesis Testing"
+author: "Derek Sollberger"
+date: "2023-10-05"
+format: 
+  html:
+    toc: true
+---
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+library("infer")
+library("moderndive")
+library("patchwork") #easy graph layouts
+library("tidyverse")
+```
+
+Source:  **Statistical Inference via Data Science:** *A Modern Dive into R and the Tidyverse*
+
+* Chapter 9: Hypothesis Testing
+* [https://moderndive.com/9-hypothesis-testing.html](https://moderndive.com/9-hypothesis-testing.html)
+
+# Load the Data
+
+Since we have CSV files (comma-separated values), the `read_csv()` command in the  `readr` package will be convenient here.  I tend to save data set into a variable `df` (stands for "data frame").
+
+Today's data set comes from the `Lahman` package, which contains a lot of historical data about Major League Baseball.  For interest, this is a subset of the data from the 2010 to 2019 seasons.
+
+```{r}
+# library("Lahman")
+# df <- Teams |>
+#   filter(yearID >= 2010) |>
+#   filter(yearID < 2020)
+# 
+# readr::write_csv(df, "baseball_2010_2019.csv")
+```
+
+
+```{r}
+#| echo: true
+#| eval: true
+df <- readr::read_csv("baseball_2010_2019.csv") |>
+  janitor::clean_names()
+```
+
+## Look at the Data
+
+One way to get a quick look at the data set is with the `head()` command (outputs the first few rows and columns).
+
+```{r}
+#| echo: true
+#| eval: true
+head(df)
+```
+
+We can also look at the *structure* of a data frame with the `str()` command.  In particular, this view allows us to quickly see which variables are *numerical* and which are *categorical*.
+
+```{r}
+#| echo: true
+#| eval: true
+str(df, give.attr = FALSE)
+```
+
+Another convenient tool for our programming purposes is looking at the *column names* (i.e. variable names that we need to type later)
+
+```{r}
+#| echo: true
+#| eval: true
+colnames(df)
+```
+
+
+
+# Example
+
+## Example 1
+
+* explanatory variable (x, categorical): `lg_id`
+* response variable (y, numerical): `sb`
+
+* null hypothesis: Both the National and American Leagues had the same average number of stolen bases.
+* alternative hypothesis: The National and American Leagues had a different average number of stolen bases.
+
+We can use the `table` command to get a quick list of the labels within a categorical variable.
+
+```{r}
+#| echo: true
+#| eval: true
+# tally
+table(df$lg_id)
+```
+
+We should use a side-by-side boxplot visualization to get a sense of two quantities.
+
+```{r}
+#| echo: true
+#| eval: true
+# boxplot
+df %>%
+  filter(lg_id == "NL" | lg_id == "AL") %>% #use only two labels
+  ggplot(aes(x = lg_id, y = sb)) + #x-axis: categorical, y-axis: numerical
+  geom_boxplot(aes(fill = lg_id)) + 
+  labs(title = "Stolen Bases by League",
+       subtitle = "2010 to 2019",
+       caption = "Spark 10",
+       x = "league",
+       y = "stolen bases")
+```
+
+Next, we compute the observed difference in means.
+
+```{r}
+#| echo: true
+#| eval: true
+# compute observed difference in means
+obs_diff_means <- df %>%
+  filter(lg_id == "NL" | lg_id == "AL") %>% #use only two labels
+  specify(formula = sb ~ lg_id) %>% #response_var ~ explanatory_var
+  calculate(stat = "diff in means", order = c("AL", "NL"))
+
+# print
+obs_diff_means
+```
+
+Now, we use the `infer` package to create *null distribution* from the null hypothesis.
+
+```{r}
+#| echo: true
+#| eval: true
+# build a null distribution
+null_distribution <- df %>%
+  filter(lg_id == "NL" | lg_id == "AL") %>%
+  specify(formula = sb ~ lg_id) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 123, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("AL", "NL"))
+```
+
+```{r}
+#| echo: true
+#| eval: true
+# visualize the p-value
+visualize(null_distribution, bins = 10) + 
+  shade_p_value(obs_stat = obs_diff_means, direction = "two_sided")
+```
+
+```{r}
+#| echo: true
+#| eval: true
+# get p-value
+null_distribution %>%
+  get_p_value(obs_stat = obs_diff_means, direction = "two_sided")
+```
+
+Since the p-value is greater than 0.05, we *fail to reject* the claim that the two leagues had the same average number of stolen bases.
+
+
+## Example 2
+
+* explanatory variable (x, categorical): `franch_id`
+* response variable (y, numerical): `w`
+
+* null hypothesis: Both the Giants and the Padres had the same average number of wins.
+* alternative hypothesis: The Giants and the Padres had a different average number of wins.
+
+We can use the `table` command to get a quick list of the labels within a categorical variable.
+
+```{r}
+#| echo: true
+#| eval: true
+# tally
+table(df$franch_id)
+```
+
+We should use a side-by-side boxplot visualization to get a sense of two quantities.
+
+```{r}
+#| echo: true
+#| eval: true
+# boxplot
+df %>%
+  filter(franch_id == "COL" | franch_id == "STL") %>% #use only two labels
+  ggplot(aes(x = franch_id, y = w)) + #x-axis: categorical, y-axis: numerical
+  geom_boxplot(aes(color = franch_id, fill = franch_id)) + 
+  labs(title = "Wins by Team",
+       subtitle = "2010 to 2019",
+       caption = "Spark 10",
+       x = "team",
+       y = "wins") +
+  scale_color_manual(values = c("#C4CED4", "#0C2340")) +
+  scale_fill_manual(values = c("#333366", "#C41E3A")) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Next, we compute the observed difference in means.
+
+```{r}
+#| echo: true
+#| eval: true
+# compute observed difference in means
+obs_diff_means <- df %>%
+  filter(franch_id == "COL" | franch_id == "STL") %>% #use only two labels
+  specify(formula = w ~ franch_id) %>% #response_var ~ explanatory_var
+  calculate(stat = "diff in means", order = c("COL", "STL"))
+
+# print
+obs_diff_means
+```
+
+Now, we use the `infer` package to create *null distribution* from the null hypothesis.
+
+```{r}
+#| echo: true
+#| eval: true
+# build a null distribution
+null_distribution <- df %>%
+  filter(franch_id == "COL" | franch_id == "STL") %>% #use only two labels
+  specify(formula = w ~ franch_id) %>% #response_var ~ explanatory_var
+  hypothesize(null = "independence") %>%
+  generate(reps = 123, type = "permute") %>%
+  calculate(stat = "diff in means", order = c("COL", "STL"))
+```
+
+```{r}
+#| echo: true
+#| eval: true
+# visualize the p-value
+visualize(null_distribution, bins = 10) + 
+  shade_p_value(obs_stat = obs_diff_means, direction = "two_sided")
+```
+
+```{r}
+#| echo: true
+#| eval: true
+# get p-value
+null_distribution %>%
+  get_p_value(obs_stat = obs_diff_means, direction = "two_sided")
+```
+
+Since the p-value is less than 0.05, we *reject* the claim that the two teams had the same average number of wins.
+
+
+# Exercises
+
+## Explore the Data
+
+Load your data set (for your sport) using the `read_csv` command and save the data frame as `df`.
+
+```{r}
+
+```
+
+Use the `head`, `str`, and `colnames` commands to look at your data set.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+Today, you are asked to carry out two hypothesis tests, display visualizations, and describe the results.
+
+## Group Exercise 1
+
+Come up with a hypothesis test and describe it here
+
+* explanatory variable (x, categorical): 
+* response variable (y, numerical): 
+* null hypothesis: 
+* alternative hypothesis: 
+
+Use the `table` function on the categorical variable to tally its contents.
+
+```{r}
+
+```
+
+Make a side-by-side boxplot visualization to get a sense of two quantities.
+
+```{r}
+
+```
+
+Use the infer package to create null distribution from the null hypothesis.
+
+```{r}
+
+```
+
+Use the `visualize` function to view the null distribution along with a shaded overlay to display the p-value.
+
+```{r}
+
+```
+
+Describe the results of your hypothesis test in a complete sentence.
+
+
+
+## Group Exercise 2
+
+Come up with another hypothesis test and describe it here
+
+* explanatory variable (x, categorical): 
+* response variable (y, numerical): 
+* null hypothesis: 
+* alternative hypothesis: 
+
+Use the `table` function on the categorical variable to tally its contents.
+
+```{r}
+
+```
+
+Make a side-by-side boxplot visualization to get a sense of two quantities.
+
+```{r}
+
+```
+
+Use the infer package to create null distribution from the null hypothesis.
+
+```{r}
+
+```
+
+Use the `visualize` function to view the null distribution along with a shaded overlay to display the p-value.
+
+```{r}
+
+```
+
+Describe the results of your hypothesis test in a complete sentence.
+
+
+
+# Wrap Up
+
+* Click `Render` to create the HTML file
+* Check the checkbox next to the HTML file (in the Files pane)
+* Click the gear ("More"), and then click "Export"
+* Upload the HTML file back into our CatCourses space

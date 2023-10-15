@@ -1,7 +1,7 @@
 ---
 title: "1: Introduction"
 author: "Derek Sollberger"
-date: "2023-08-24"
+date: "2023-10-17"
 format: 
   html:
     toc: true
@@ -15,7 +15,7 @@ library("gt")
 library("readxl")
 library("tidyverse")
 
-sections_df <- readxl::read_xlsx("sections.xlsx")
+sections_df <- readxl::read_xlsx("sections2.xlsx")
 ```
 
 # Spark
@@ -23,6 +23,12 @@ sections_df <- readxl::read_xlsx("sections.xlsx")
 ## Sports Analytics
 
 * Fall 2023
+
+::: {.callout-tip}
+## Course Description
+
+This semester seminar will introduce budding analysts to the field of growing field of sports analytics.  Instruction will start with baseball sabermetrics, but will evolve to allow students to research, discuss, and become an expert of their favorite professional sport.  Activities include participation in fantasy sports, corporate presentations, debates, and computer programming calculations.
+:::
 
 ```{r}
 #| echo: false
@@ -157,7 +163,7 @@ Essays---the ones deemed 'final'---will be graded with the following rubric.
 * Apps are designed to give instant feedback
 * lowest score dropped
 
-## Collaboration
+## Collaboration (in-person)
 
 * 25 percent of semester grade
 * This is where the data science learning takes place
@@ -165,13 +171,24 @@ Essays---the ones deemed 'final'---will be graded with the following rubric.
 * sports groups will work on assigned data-driven tasks
 
 
-## Presentation
+## Delivery (in-person)
 
 * 25 percent of semester grade
-* sports groups will turn in deliverables (code output)
+* sports groups will turn in deliverables
 * sports groups will present their findings and progress weekly
-* audience members will provide feedback
 
+# Schedule
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+schedule_df <- readxl::read_xlsx("Sports_Analytics_schedule.xlsx")
+
+schedule_df |>
+  gt() |>
+  sub_missing()
+```
 
 
 # University Resources

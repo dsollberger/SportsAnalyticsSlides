@@ -39,7 +39,7 @@
     "href": "slides.html",
     "title": "SportsAnalyticsSlides",
     "section": "",
-    "text": "12: Hypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n11: Confidence Intervals\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n10: Literature Review\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n9: Advanced Statistics\n\n\n\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n8: Rankings\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n7: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Scatterplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n5: Barplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n4: Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n3: Summaries\n\n\n\n\n\n\n\n\n\n\n\n\nAug 31, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n2: Quarto\n\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nAug 24, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
+    "text": "1: Introduction\n\n\n\n\n\n\n\n\n\n\n\n\nOct 17, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n12: Hypothesis Testing\n\n\n\n\n\n\n\n\n\n\n\n\nOct 5, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n11: Confidence Intervals\n\n\n\n\n\n\n\n\n\n\n\n\nOct 3, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n10: Literature Review\n\n\n\n\n\n\n\n\n\n\n\n\nSep 28, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n9: Advanced Statistics\n\n\n\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n8: Rankings\n\n\n\n\n\n\n\n\n\n\n\n\nSep 19, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n7: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\nSep 14, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n6: Scatterplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 12, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n5: Barplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 7, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n4: Boxplots\n\n\n\n\n\n\n\n\n\n\n\n\nSep 5, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n3: Summaries\n\n\n\n\n\n\n\n\n\n\n\n\nAug 31, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\n  \n\n\n\n\n2: Quarto\n\n\n\n\n\n\n\n\n\n\n\n\nAug 29, 2023\n\n\nDerek Sollberger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/02_-_Exploring Data/02_exploring_data.html#look-at-the-data",
@@ -564,7 +564,7 @@
     "href": "posts/01_syllabus/01_introductions.html",
     "title": "1: Introduction",
     "section": "",
-    "text": "Fall 2023\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    25\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    35\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    37\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
+    "text": "Fall 2023\n\n\n\n\n\n\n\nCourse Description\n\n\n\nThis semester seminar will introduce budding analysts to the field of growing field of sports analytics. Instruction will start with baseball sabermetrics, but will evolve to allow students to research, discuss, and become an expert of their favorite professional sport. Activities include participation in fantasy sports, corporate presentations, debates, and computer programming calculations.\n\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    26\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    36\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    28\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
   },
   {
     "objectID": "posts/01_syllabus/01_introductions.html#introducting-the-presenter",
@@ -634,7 +634,7 @@
     "href": "posts/01_syllabus/01_introductions.html#sports-analytics",
     "title": "1: Introduction",
     "section": "",
-    "text": "Fall 2023\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    25\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    35\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    37\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
+    "text": "Fall 2023\n\n\n\n\n\n\n\nCourse Description\n\n\n\nThis semester seminar will introduce budding analysts to the field of growing field of sports analytics. Instruction will start with baseball sabermetrics, but will evolve to allow students to research, discuss, and become an expert of their favorite professional sport. Activities include participation in fantasy sports, corporate presentations, debates, and computer programming calculations.\n\n\n\n\n\n\n\n\n  \n    \n    \n      section\n      CRN\n      day\n      time\n      room\n    \n  \n  \n    26\n38119\nTuTh\n230 PM to 420 PM\nGRAN 120\n    36\n38322\nTuTh\n1130 AM to 120 PM\nADMIN 265\n    28\n38533\nTuTh\n430 PM to 620 PM\nGRAN 120"
   },
   {
     "objectID": "posts/01_syllabus/01_introductions.html#lecturer",
@@ -1146,5 +1146,19 @@
     "title": "12: Hypothesis Testing",
     "section": "Group Exercise 2",
     "text": "Group Exercise 2\nCome up with another hypothesis test and describe it here\n\nexplanatory variable (x, categorical):\nresponse variable (y, numerical):\nnull hypothesis:\nalternative hypothesis:\n\nUse the table function on the categorical variable to tally its contents.\nMake a side-by-side boxplot visualization to get a sense of two quantities.\nUse the infer package to create null distribution from the null hypothesis.\nUse the visualize function to view the null distribution along with a shaded overlay to display the p-value.\nDescribe the results of your hypothesis test in a complete sentence."
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#collaboration-in-person",
+    "href": "posts/01_syllabus/01_introductions.html#collaboration-in-person",
+    "title": "1: Introduction",
+    "section": "Collaboration (in-person)",
+    "text": "Collaboration (in-person)\n\n25 percent of semester grade\nThis is where the data science learning takes place\nstudents will be present and active in class\nsports groups will work on assigned data-driven tasks"
+  },
+  {
+    "objectID": "posts/01_syllabus/01_introductions.html#delivery-in-person",
+    "href": "posts/01_syllabus/01_introductions.html#delivery-in-person",
+    "title": "1: Introduction",
+    "section": "Delivery (in-person)",
+    "text": "Delivery (in-person)\n\n25 percent of semester grade\nsports groups will turn in deliverables\nsports groups will present their findings and progress weekly"
   }
 ]

@@ -2,6 +2,7 @@
   {
     "listing": "/slides.html",
     "items": [
+      "/posts/01_syllabus/01_introductions.html",
       "/posts/12_hypothesis_testing/12_hypothesis_testing.html",
       "/posts/11_confidence_intervals/11_confidence_intervals.html",
       "/posts/10_lit_search/10_lit_search.html",
@@ -12,8 +13,7 @@
       "/posts/05_barplots/05_barplots.html",
       "/posts/04_boxplots/04_boxplots.html",
       "/posts/03_summaries/03_summaries.html",
-      "/posts/02_quarto/02_quarto.html",
-      "/posts/01_syllabus/01_introductions.html"
+      "/posts/02_quarto/02_quarto.html"
     ]
   }
 ]

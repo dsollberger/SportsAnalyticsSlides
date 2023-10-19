@@ -1,7 +1,7 @@
 ---
 title: "2: Quarto"
 author: "Derek Sollberger"
-date: "2023-08-29"
+date: "2023-10-19"
 format: 
   html:
     toc: true
@@ -140,24 +140,3 @@ Materials from this class come from sources such as the following textbooks
         - song artists in **boldface**
 
 
-
-
-
-
-:::: {.columns}
-
-::: {.column width="50%"}
-	
-:::
-
-::: {.column width="50%"}
-
-:::
-
-::::
-
-::::: {.panel-tabset}
-
-
-
-:::::

@@ -1,7 +1,7 @@
 ---
 title: "3: Summaries"
-author: "Derek Sollberger"
-date: "2023-08-31"
+author: "type group name here"
+date: "2023-10-24"
 format:
   html:
     toc: true
@@ -17,21 +17,23 @@ Today we are going to try out convenient code packages to quickly explore our sp
 
 To install a package, we use the `install.packages()` function in the console.  For example, when I want to install the `skimr` package, I use the following line of code.
 
-```{r}
-# install.packages("skimr")
+```
+install.packages("skimr")
 ```
 
 ```{r}
 #| message: false
 #| warning: false
 # load the code packages
-library("skimr")
+#library("skimr")
 library("tidyverse")
 ```
 
 Since we have a CSV file, I recommend using the `read_csv()` function in the `readr` package (a part of the `tidyverse`).  At first, I like to save the data into a variable called `df` ("data frame").
 
 ```{r}
+#| echo: true
+#| eval: true
 # load the data
 df <- readr::read_csv("baseball_data_90s.csv")
 ```
@@ -39,6 +41,8 @@ df <- readr::read_csv("baseball_data_90s.csv")
 Now, having read the `skimr` documentation, I can try out its summary function on the `df` data frame.
 
 ```{r}
+#| echo: true
+#| eval: true
 skimr::skim(df)
 ```
 
@@ -47,11 +51,11 @@ skimr::skim(df)
 
 Now it is your turn!  First, instead of `skimr`, *install* the package that has been assigned to your group.
 
-* `DataExplorer::plot_intro()`
-* `dataMaid::visualize()`
-* `gtExtras::gt_plt_summary()`
-* `SmartEDA::ExpData()`
-* `summarytools::dfSummary()`
+* `DataExplorer`
+* `dataMaid`
+* `gtExtras`
+* `SmartEDA`
+* `summarytools`
 
 Next, load the code package using the `library()` function.
 
@@ -66,6 +70,12 @@ Since we have a CSV file, I recommend using the `read_csv()` function in the `re
 ```
 
 Finally, look at the documentation for your group's code package, and use the summary function that has been recommended.
+
+* `DataExplorer::plot_intro()`
+* `dataMaid::visualize()`
+* `gtExtras::gt_plt_summary()`
+* `SmartEDA::ExpData()`
+* `summarytools::dfSummary()`
 
 ```{r}
 

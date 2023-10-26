@@ -1,10 +1,10 @@
 ---
-title: "4: Boxplots"
+title: "03: Boxplots"
 author: "Derek Sollberger"
-date: "2023-09-05"
+date: "2023-10-26"
 format: 
   html:
-    toc: TRUE
+    theme: cerulean
 ---
 
 ## Load the Tidyverse
@@ -171,3 +171,19 @@ Build two different boxplot visualizations.  Be sure to change the `labs` (label
 * Check the checkbox next to the HTML file (in the Files pane)
 * Click the gear ("More"), and then click "Export"
 * Upload the HTML file back into our CatCourses space
+
+```{r}
+#| echo: false
+#| eval: false
+
+df |>
+  filter(franchID %in% c("ARI", "COL", "LAD", "SDP", "SFG")) |>
+  group_by(franchID) |>
+  mutate(q25 = quantile(W, 0.25, na.rm = TRUE),
+         q50 = quantile(W, 0.50, na.rm = TRUE),
+         q75 = quantile(W, 0.75, na.rm = TRUE)) |>
+  ungroup() |>
+  select(franchID, q25, q50, q75) |>
+  distinct() -> df_p
+```
+

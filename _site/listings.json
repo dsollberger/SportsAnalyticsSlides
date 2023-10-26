@@ -2,6 +2,8 @@
   {
     "listing": "/slides.html",
     "items": [
+      "/posts/04_boxplots/04_boxplots.html",
+      "/posts/03_summaries/03_summaries.html",
       "/posts/02_quarto/02_quarto.html",
       "/posts/01_syllabus/01_introductions.html",
       "/posts/12_hypothesis_testing/12_hypothesis_testing.html",
@@ -11,9 +13,7 @@
       "/posts/08_ranking/08_ranking.html",
       "/posts/07_regression/07_regression.html",
       "/posts/06_scatterplots/06_scatterplots.html",
-      "/posts/05_barplots/05_barplots.html",
-      "/posts/04_boxplots/04_boxplots.html",
-      "/posts/03_summaries/03_summaries.html"
+      "/posts/05_barplots/05_barplots.html"
     ]
   }
 ]

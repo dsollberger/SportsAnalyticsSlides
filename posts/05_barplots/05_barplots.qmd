@@ -1,7 +1,7 @@
 ---
 title: "5: Barplots"
 author: "Derek Sollberger"
-date: "2023-09-07"
+date: "2023-10-31"
 format: 
   html:
     toc: true
@@ -167,7 +167,7 @@ df_Burke |>
   geom_bar(stat = "identity") +
   labs(title = "Glenn Burke: A Brief Time in the Major Leagues",
        subtitle = "He spent seasons with the Dodgers and the Athletics",
-       caption = "Spark 01",
+       caption = "Spark 10",
        x = "season", y = "games played")
 ```
 
@@ -181,7 +181,7 @@ df_Burke |>
   geom_bar(stat = "count") +
   labs(title = "Glenn Burke: A Brief Time in the Major Leagues",
        subtitle = "He spent seasons with the Dodgers and the Athletics",
-       caption = "Spark 01",
+       caption = "Spark 10",
        x = "team", y = "seasons played")
 ```
 

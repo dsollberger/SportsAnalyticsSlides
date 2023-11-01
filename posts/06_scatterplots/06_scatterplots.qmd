@@ -1,7 +1,7 @@
 ---
 title: "6: Scatterplots"
 author: "Derek Sollberger"
-date: "2023-09-12"
+date: "2023-11-02"
 format: 
   html:
     toc: true
@@ -312,7 +312,7 @@ Build two different scatterplot visualizations.
 
     - describe the correlation (e.g. "strongly and positively correlated")
 
-* try to affect the colors
+* try to change the colors
 
 ```{r}
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Derek Sollberger">
-<meta name="dcterms.date" content="2023-09-19">
+<meta name="dcterms.date" content="2023-11-09">
 
 <title>Slides for Sports Analytics - 8: Rankings</title>
 <style>
@@ -91,7 +91,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -150,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 19, 2023</p>
+        <p class="date">November 9, 2023</p>
       </div>
     </div>
     
@@ -332,23 +333,23 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Top 10 Teams by Home Runs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="rrdkrvmsna" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rrdkrvmsna table {
+<div id="lvcpecqkpj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lvcpecqkpj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rrdkrvmsna thead, #rrdkrvmsna tbody, #rrdkrvmsna tfoot, #rrdkrvmsna tr, #rrdkrvmsna td, #rrdkrvmsna th {
+#lvcpecqkpj thead, #lvcpecqkpj tbody, #lvcpecqkpj tfoot, #lvcpecqkpj tr, #lvcpecqkpj td, #lvcpecqkpj th {
   border-style: none;
 }
 
-#rrdkrvmsna p {
+#lvcpecqkpj p {
   margin: 0;
   padding: 0;
 }
 
-#rrdkrvmsna .gt_table {
+#lvcpecqkpj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -374,12 +375,12 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-left-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_caption {
+#lvcpecqkpj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rrdkrvmsna .gt_title {
+#lvcpecqkpj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -391,7 +392,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-width: 0;
 }
 
-#rrdkrvmsna .gt_subtitle {
+#lvcpecqkpj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -403,7 +404,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-width: 0;
 }
 
-#rrdkrvmsna .gt_heading {
+#lvcpecqkpj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -415,13 +416,13 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_bottom_border {
+#lvcpecqkpj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_col_headings {
+#lvcpecqkpj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -436,7 +437,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_col_heading {
+#lvcpecqkpj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -456,7 +457,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#rrdkrvmsna .gt_column_spanner_outer {
+#lvcpecqkpj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,15 +469,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 4px;
 }
 
-#rrdkrvmsna .gt_column_spanner_outer:first-child {
+#lvcpecqkpj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rrdkrvmsna .gt_column_spanner_outer:last-child {
+#lvcpecqkpj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rrdkrvmsna .gt_column_spanner {
+#lvcpecqkpj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -488,11 +489,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   width: 100%;
 }
 
-#rrdkrvmsna .gt_spanner_row {
+#lvcpecqkpj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rrdkrvmsna .gt_group_heading {
+#lvcpecqkpj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -518,7 +519,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   text-align: left;
 }
 
-#rrdkrvmsna .gt_empty_group_heading {
+#lvcpecqkpj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -533,15 +534,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: middle;
 }
 
-#rrdkrvmsna .gt_from_md > :first-child {
+#lvcpecqkpj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rrdkrvmsna .gt_from_md > :last-child {
+#lvcpecqkpj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rrdkrvmsna .gt_row {
+#lvcpecqkpj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -560,7 +561,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#rrdkrvmsna .gt_stub {
+#lvcpecqkpj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -573,7 +574,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#rrdkrvmsna .gt_stub_row_group {
+#lvcpecqkpj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -587,15 +588,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: top;
 }
 
-#rrdkrvmsna .gt_row_group_first td {
+#lvcpecqkpj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rrdkrvmsna .gt_row_group_first th {
+#lvcpecqkpj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rrdkrvmsna .gt_summary_row {
+#lvcpecqkpj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -605,16 +606,16 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#rrdkrvmsna .gt_first_summary_row {
+#lvcpecqkpj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_first_summary_row.thick {
+#lvcpecqkpj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rrdkrvmsna .gt_last_summary_row {
+#lvcpecqkpj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -624,7 +625,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_grand_summary_row {
+#lvcpecqkpj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -634,7 +635,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#rrdkrvmsna .gt_first_grand_summary_row {
+#lvcpecqkpj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -644,7 +645,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_last_grand_summary_row_top {
+#lvcpecqkpj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -654,11 +655,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_striped {
+#lvcpecqkpj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rrdkrvmsna .gt_table_body {
+#lvcpecqkpj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -667,7 +668,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_footnotes {
+#lvcpecqkpj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -681,7 +682,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_footnote {
+#lvcpecqkpj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -690,7 +691,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#rrdkrvmsna .gt_sourcenotes {
+#lvcpecqkpj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -704,7 +705,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#rrdkrvmsna .gt_sourcenote {
+#lvcpecqkpj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -712,63 +713,63 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#rrdkrvmsna .gt_left {
+#lvcpecqkpj .gt_left {
   text-align: left;
 }
 
-#rrdkrvmsna .gt_center {
+#lvcpecqkpj .gt_center {
   text-align: center;
 }
 
-#rrdkrvmsna .gt_right {
+#lvcpecqkpj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rrdkrvmsna .gt_font_normal {
+#lvcpecqkpj .gt_font_normal {
   font-weight: normal;
 }
 
-#rrdkrvmsna .gt_font_bold {
+#lvcpecqkpj .gt_font_bold {
   font-weight: bold;
 }
 
-#rrdkrvmsna .gt_font_italic {
+#lvcpecqkpj .gt_font_italic {
   font-style: italic;
 }
 
-#rrdkrvmsna .gt_super {
+#lvcpecqkpj .gt_super {
   font-size: 65%;
 }
 
-#rrdkrvmsna .gt_footnote_marks {
+#lvcpecqkpj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rrdkrvmsna .gt_asterisk {
+#lvcpecqkpj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rrdkrvmsna .gt_indent_1 {
+#lvcpecqkpj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rrdkrvmsna .gt_indent_2 {
+#lvcpecqkpj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rrdkrvmsna .gt_indent_3 {
+#lvcpecqkpj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rrdkrvmsna .gt_indent_4 {
+#lvcpecqkpj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rrdkrvmsna .gt_indent_5 {
+#lvcpecqkpj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -846,23 +847,23 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Top 10 Teams by ERA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="cafvcjwtst" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cafvcjwtst table {
+<div id="toppmisone" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#toppmisone table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cafvcjwtst thead, #cafvcjwtst tbody, #cafvcjwtst tfoot, #cafvcjwtst tr, #cafvcjwtst td, #cafvcjwtst th {
+#toppmisone thead, #toppmisone tbody, #toppmisone tfoot, #toppmisone tr, #toppmisone td, #toppmisone th {
   border-style: none;
 }
 
-#cafvcjwtst p {
+#toppmisone p {
   margin: 0;
   padding: 0;
 }
 
-#cafvcjwtst .gt_table {
+#toppmisone .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -888,12 +889,12 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-left-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_caption {
+#toppmisone .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cafvcjwtst .gt_title {
+#toppmisone .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -905,7 +906,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-width: 0;
 }
 
-#cafvcjwtst .gt_subtitle {
+#toppmisone .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -917,7 +918,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-width: 0;
 }
 
-#cafvcjwtst .gt_heading {
+#toppmisone .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -929,13 +930,13 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_bottom_border {
+#toppmisone .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_col_headings {
+#toppmisone .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -950,7 +951,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_col_heading {
+#toppmisone .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -970,7 +971,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#cafvcjwtst .gt_column_spanner_outer {
+#toppmisone .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -982,15 +983,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 4px;
 }
 
-#cafvcjwtst .gt_column_spanner_outer:first-child {
+#toppmisone .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cafvcjwtst .gt_column_spanner_outer:last-child {
+#toppmisone .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cafvcjwtst .gt_column_spanner {
+#toppmisone .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1002,11 +1003,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   width: 100%;
 }
 
-#cafvcjwtst .gt_spanner_row {
+#toppmisone .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cafvcjwtst .gt_group_heading {
+#toppmisone .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1032,7 +1033,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   text-align: left;
 }
 
-#cafvcjwtst .gt_empty_group_heading {
+#toppmisone .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1047,15 +1048,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: middle;
 }
 
-#cafvcjwtst .gt_from_md > :first-child {
+#toppmisone .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cafvcjwtst .gt_from_md > :last-child {
+#toppmisone .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cafvcjwtst .gt_row {
+#toppmisone .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1074,7 +1075,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#cafvcjwtst .gt_stub {
+#toppmisone .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1087,7 +1088,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#cafvcjwtst .gt_stub_row_group {
+#toppmisone .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1101,15 +1102,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: top;
 }
 
-#cafvcjwtst .gt_row_group_first td {
+#toppmisone .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cafvcjwtst .gt_row_group_first th {
+#toppmisone .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cafvcjwtst .gt_summary_row {
+#toppmisone .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1119,16 +1120,16 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#cafvcjwtst .gt_first_summary_row {
+#toppmisone .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_first_summary_row.thick {
+#toppmisone .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cafvcjwtst .gt_last_summary_row {
+#toppmisone .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1138,7 +1139,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_grand_summary_row {
+#toppmisone .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1148,7 +1149,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#cafvcjwtst .gt_first_grand_summary_row {
+#toppmisone .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1158,7 +1159,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_last_grand_summary_row_top {
+#toppmisone .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1168,11 +1169,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_striped {
+#toppmisone .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cafvcjwtst .gt_table_body {
+#toppmisone .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1181,7 +1182,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_footnotes {
+#toppmisone .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1195,7 +1196,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_footnote {
+#toppmisone .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1204,7 +1205,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#cafvcjwtst .gt_sourcenotes {
+#toppmisone .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1218,7 +1219,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#cafvcjwtst .gt_sourcenote {
+#toppmisone .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1226,63 +1227,63 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#cafvcjwtst .gt_left {
+#toppmisone .gt_left {
   text-align: left;
 }
 
-#cafvcjwtst .gt_center {
+#toppmisone .gt_center {
   text-align: center;
 }
 
-#cafvcjwtst .gt_right {
+#toppmisone .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cafvcjwtst .gt_font_normal {
+#toppmisone .gt_font_normal {
   font-weight: normal;
 }
 
-#cafvcjwtst .gt_font_bold {
+#toppmisone .gt_font_bold {
   font-weight: bold;
 }
 
-#cafvcjwtst .gt_font_italic {
+#toppmisone .gt_font_italic {
   font-style: italic;
 }
 
-#cafvcjwtst .gt_super {
+#toppmisone .gt_super {
   font-size: 65%;
 }
 
-#cafvcjwtst .gt_footnote_marks {
+#toppmisone .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cafvcjwtst .gt_asterisk {
+#toppmisone .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cafvcjwtst .gt_indent_1 {
+#toppmisone .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cafvcjwtst .gt_indent_2 {
+#toppmisone .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cafvcjwtst .gt_indent_3 {
+#toppmisone .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cafvcjwtst .gt_indent_4 {
+#toppmisone .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cafvcjwtst .gt_indent_5 {
+#toppmisone .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1364,23 +1365,23 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div id="hqcjjfgkke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hqcjjfgkke table {
+<div id="oevwqqgrmf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oevwqqgrmf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hqcjjfgkke thead, #hqcjjfgkke tbody, #hqcjjfgkke tfoot, #hqcjjfgkke tr, #hqcjjfgkke td, #hqcjjfgkke th {
+#oevwqqgrmf thead, #oevwqqgrmf tbody, #oevwqqgrmf tfoot, #oevwqqgrmf tr, #oevwqqgrmf td, #oevwqqgrmf th {
   border-style: none;
 }
 
-#hqcjjfgkke p {
+#oevwqqgrmf p {
   margin: 0;
   padding: 0;
 }
 
-#hqcjjfgkke .gt_table {
+#oevwqqgrmf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1406,12 +1407,12 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-left-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_caption {
+#oevwqqgrmf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hqcjjfgkke .gt_title {
+#oevwqqgrmf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1423,7 +1424,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-width: 0;
 }
 
-#hqcjjfgkke .gt_subtitle {
+#oevwqqgrmf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1435,7 +1436,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-width: 0;
 }
 
-#hqcjjfgkke .gt_heading {
+#oevwqqgrmf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1447,13 +1448,13 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_bottom_border {
+#oevwqqgrmf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_col_headings {
+#oevwqqgrmf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1468,7 +1469,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_col_heading {
+#oevwqqgrmf .gt_col_heading {
   color: #FFFFFF;
   background-color: #0000FF;
   font-size: 100%;
@@ -1488,7 +1489,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#hqcjjfgkke .gt_column_spanner_outer {
+#oevwqqgrmf .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0000FF;
   font-size: 100%;
@@ -1500,15 +1501,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 4px;
 }
 
-#hqcjjfgkke .gt_column_spanner_outer:first-child {
+#oevwqqgrmf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hqcjjfgkke .gt_column_spanner_outer:last-child {
+#oevwqqgrmf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hqcjjfgkke .gt_column_spanner {
+#oevwqqgrmf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1520,11 +1521,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   width: 100%;
 }
 
-#hqcjjfgkke .gt_spanner_row {
+#oevwqqgrmf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hqcjjfgkke .gt_group_heading {
+#oevwqqgrmf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1550,7 +1551,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   text-align: left;
 }
 
-#hqcjjfgkke .gt_empty_group_heading {
+#oevwqqgrmf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1565,15 +1566,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: middle;
 }
 
-#hqcjjfgkke .gt_from_md > :first-child {
+#oevwqqgrmf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hqcjjfgkke .gt_from_md > :last-child {
+#oevwqqgrmf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hqcjjfgkke .gt_row {
+#oevwqqgrmf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1592,7 +1593,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   overflow-x: hidden;
 }
 
-#hqcjjfgkke .gt_stub {
+#oevwqqgrmf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1605,7 +1606,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#hqcjjfgkke .gt_stub_row_group {
+#oevwqqgrmf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1619,15 +1620,15 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   vertical-align: top;
 }
 
-#hqcjjfgkke .gt_row_group_first td {
+#oevwqqgrmf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hqcjjfgkke .gt_row_group_first th {
+#oevwqqgrmf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hqcjjfgkke .gt_summary_row {
+#oevwqqgrmf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1637,16 +1638,16 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#hqcjjfgkke .gt_first_summary_row {
+#oevwqqgrmf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_first_summary_row.thick {
+#oevwqqgrmf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hqcjjfgkke .gt_last_summary_row {
+#oevwqqgrmf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1656,7 +1657,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_grand_summary_row {
+#oevwqqgrmf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1666,7 +1667,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#hqcjjfgkke .gt_first_grand_summary_row {
+#oevwqqgrmf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1676,7 +1677,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-top-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_last_grand_summary_row_top {
+#oevwqqgrmf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1686,11 +1687,11 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_striped {
+#oevwqqgrmf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hqcjjfgkke .gt_table_body {
+#oevwqqgrmf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1699,7 +1700,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-bottom-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_footnotes {
+#oevwqqgrmf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1713,7 +1714,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_footnote {
+#oevwqqgrmf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1722,7 +1723,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#hqcjjfgkke .gt_sourcenotes {
+#oevwqqgrmf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1736,7 +1737,7 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   border-right-color: #D3D3D3;
 }
 
-#hqcjjfgkke .gt_sourcenote {
+#oevwqqgrmf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1744,63 +1745,63 @@ dbl (35): yearID, Rank, G, Ghome, W, L, R, AB, H, X2B, X3B, HR, BB, SO, SB, ...
   padding-right: 5px;
 }
 
-#hqcjjfgkke .gt_left {
+#oevwqqgrmf .gt_left {
   text-align: left;
 }
 
-#hqcjjfgkke .gt_center {
+#oevwqqgrmf .gt_center {
   text-align: center;
 }
 
-#hqcjjfgkke .gt_right {
+#oevwqqgrmf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hqcjjfgkke .gt_font_normal {
+#oevwqqgrmf .gt_font_normal {
   font-weight: normal;
 }
 
-#hqcjjfgkke .gt_font_bold {
+#oevwqqgrmf .gt_font_bold {
   font-weight: bold;
 }
 
-#hqcjjfgkke .gt_font_italic {
+#oevwqqgrmf .gt_font_italic {
   font-style: italic;
 }
 
-#hqcjjfgkke .gt_super {
+#oevwqqgrmf .gt_super {
   font-size: 65%;
 }
 
-#hqcjjfgkke .gt_footnote_marks {
+#oevwqqgrmf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hqcjjfgkke .gt_asterisk {
+#oevwqqgrmf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hqcjjfgkke .gt_indent_1 {
+#oevwqqgrmf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hqcjjfgkke .gt_indent_2 {
+#oevwqqgrmf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hqcjjfgkke .gt_indent_3 {
+#oevwqqgrmf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hqcjjfgkke .gt_indent_4 {
+#oevwqqgrmf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hqcjjfgkke .gt_indent_5 {
+#oevwqqgrmf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

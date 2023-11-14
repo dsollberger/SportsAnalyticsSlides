@@ -1,7 +1,7 @@
 ---
 title: "8: Rankings"
 author: "Derek Sollberger"
-date: "2023-09-19"
+date: "2023-11-09"
 format: 
   html:
     toc: true

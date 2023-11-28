@@ -1,7 +1,7 @@
 ---
 title: "11: Confidence Intervals"
 author: "Derek Sollberger"
-date: "2023-10-03"
+date: "2023-11-28"
 format: 
   html:
     toc: true
